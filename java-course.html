@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Learn Java — Frontend Forge</title>
+<meta name="description" content="A detailed, example-driven Java course: syntax, OOP, collections, interfaces, exceptions and generics.">
+
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="course.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= COURSE HEADER ================= -->
+<section class="course-page-header">
+    <a class="back-link" href="courses.html">← Back to Courses</a>
+    <p class="eyebrow">&lt;course_05 /&gt;</p>
+    <h1>Learn <span class="ember-text">Java</span></h1>
+    <p>Java is a strictly-typed, object-oriented language that powers everything from Android apps to enterprise backends. Its explicitness makes intent clear at a glance. Work through the lessons below, then try the code yourself in the Playground's Java mode.</p>
+</section>
+
+<nav class="lesson-toc" aria-label="Lesson contents">
+    <a href="#l1">1. Setup &amp; Syntax</a>
+    <a href="#l2">2. Variables &amp; Types</a>
+    <a href="#l3">3. Conditionals</a>
+    <a href="#l4">4. Loops</a>
+    <a href="#l5">5. Arrays</a>
+    <a href="#l6">6. Methods</a>
+    <a href="#l7">7. Classes &amp; Objects</a>
+    <a href="#l8">8. Constructors &amp; this</a>
+    <a href="#l9">9. Inheritance</a>
+    <a href="#l10">10. Interfaces &amp; Abstract Classes</a>
+    <a href="#l11">11. Collections</a>
+    <a href="#l12">12. Exceptions</a>
+    <a href="#l13">13. Generics</a>
+    <a href="#l14">14. Static vs Instance</a>
+    <a href="#l15">15. String Formatting &amp; Enums</a>
+</nav>
+
+<!-- ================= LESSONS ================= -->
+<article>
+
+<section class="lesson" id="l1">
+    <span class="lesson-index">Lesson 1</span>
+    <h2>Setup &amp; Program Structure</h2>
+    <p>Every Java program lives inside a <code>class</code>, and execution always starts at a special method called <code>main</code>. The filename must match the public class name exactly — <code>Main.java</code> for <code>class Main</code>.</p>
+    <div class="lesson-example">public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Frontend Forge!");
+    }
+}</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: class Main contains the main method, which the JVM calls first to start the program">
+        <rect x="20" y="20" width="420" height="110" rx="10" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="36" y="44" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text-dim)">class Main</text>
+        <rect x="40" y="55" width="380" height="55" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="230" y="78" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text)">public static void main(String[] args)</text>
+        <text x="230" y="98" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:10.5px;fill:var(--text-muted)">JVM calls this first</text>
+      </svg>
+      <figcaption>public means accessible from anywhere, static means it runs without creating a Main object first.</figcaption>
+    </figure>
+    <p>Unlike JavaScript or Python, Java is <strong>compiled</strong> — <code>javac Main.java</code> produces bytecode that the Java Virtual Machine (JVM) then runs with <code>java Main</code>, which is what lets the same compiled file run unchanged on any OS with a JVM installed.</p>
+</section>
+
+<section class="lesson" id="l2">
+    <span class="lesson-index">Lesson 2</span>
+    <h2>Variables &amp; Types</h2>
+    <p>Java is <strong>statically typed</strong>: every variable's type is declared up front and checked at compile time, before the program ever runs. Primitives (<code>int</code>, <code>double</code>, <code>boolean</code>, <code>char</code>) hold raw values directly; everything else is an object reference.</p>
+    <div class="lesson-example">int lessons = 15;
+double rating = 4.9;
+boolean isFree = true;
+char grade = 'A';
+String name = "Java";          // object, not a primitive
+
+final int MAX_ATTEMPTS = 3;    // final = constant, can't be reassigned</div>
+    <p>Mismatching types is a compile error, not a runtime surprise — writing <code>int lessons = "fifteen";</code> won't even build. This upfront checking is exactly what catches whole categories of bugs before the code ever runs.</p>
+</section>
+
+<section class="lesson" id="l3">
+    <span class="lesson-index">Lesson 3</span>
+    <h2>Conditionals</h2>
+    <p><code>if</code>/<code>else if</code>/<code>else</code> works with curly braces marking each block, and Java also has a <code>switch</code> statement for matching one value against several fixed cases.</p>
+    <div class="lesson-example">int score = 72;
+String grade;
+
+if (score >= 90) {
+    grade = "A";
+} else if (score >= 70) {
+    grade = "B";
+} else {
+    grade = "C";
+}
+
+switch (grade) {
+    case "A" -&gt; System.out.println("Excellent");
+    case "B" -&gt; System.out.println("Good");
+    default  -&gt; System.out.println("Keep going");
+}</div>
+    <p>The arrow form (<code>case "A" -&gt; ...</code>) is the modern Java syntax and doesn't "fall through" to the next case automatically like the older colon-based <code>switch</code> did.</p>
+</section>
+
+<section class="lesson" id="l4">
+    <span class="lesson-index">Lesson 4</span>
+    <h2>Loops</h2>
+    <p>Java offers a classic C-style <code>for</code> loop with an explicit counter, an enhanced <code>for-each</code> for iterating collections directly, and <code>while</code>/<code>do-while</code> for condition-driven repetition.</p>
+    <div class="lesson-example">for (int i = 0; i &lt; 3; i++) {
+    System.out.println(i);
+}
+
+String[] courses = {"HTML", "CSS", "Java"};
+for (String course : courses) {
+    System.out.println(course);
+}
+
+int attempts = 0;
+while (attempts &lt; 3) {
+    attempts++;
+}</div>
+    <p>The for-each form (<code>for (String course : courses)</code>) reads "for each course in courses" and avoids off-by-one indexing bugs entirely — reach for it whenever you don't need the index itself.</p>
+</section>
+
+<section class="lesson" id="l5">
+    <span class="lesson-index">Lesson 5</span>
+    <h2>Arrays</h2>
+    <p>An array holds a <strong>fixed number</strong> of elements of the same type, decided at creation time — unlike a list, its length can't change afterward. Multi-dimensional arrays nest one array inside another for grids.</p>
+    <div class="lesson-example">int[] scores = {85, 92, 78};
+scores[0] = 90;
+System.out.println(scores.length);   // 3
+
+int[][] grid = new int[3][3];        // 3x3 grid, all zeros
+grid[1][1] = 1;</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 400 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a fixed-size Java array with three indexed slots">
+        <rect x="20" y="20" width="110" height="50" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="75" y="50" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">90</text>
+        <rect x="145" y="20" width="110" height="50" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="200" y="50" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">92</text>
+        <rect x="270" y="20" width="110" height="50" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="325" y="50" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">78</text>
+      </svg>
+      <figcaption>scores.length is always 3 for this array — Java allocates that exact size in memory up front.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l6">
+    <span class="lesson-index">Lesson 6</span>
+    <h2>Methods</h2>
+    <p>A method's signature declares its return type, name, and parameter types up front. Use <code>void</code> when a method performs an action but returns nothing.</p>
+    <div class="lesson-example">public static int square(int n) {
+    return n * n;
+}
+
+public static void printProgress(String course, int percent) {
+    System.out.println(course + ": " + percent + "%");
+}
+
+square(6);                      // 36
+printProgress("Java", 40);</div>
+    <p>Java supports <strong>method overloading</strong> — multiple methods with the same name but different parameter lists — letting <code>add(int, int)</code> and <code>add(double, double)</code> coexist as distinct methods the compiler picks between.</p>
+</section>
+
+<section class="lesson" id="l7">
+    <span class="lesson-index">Lesson 7</span>
+    <h2>Classes &amp; Objects</h2>
+    <p>A class defines fields (data) and methods (behavior); an object is a specific instance created from it with <code>new</code>. Each object has its own independent copy of the class's fields.</p>
+    <div class="lesson-example">public class Course {
+    String name;
+    int lessons;
+    int completed;
+
+    int progress() {
+        return completed * 100 / lessons;
+    }
+}
+
+Course java = new Course();
+java.name = "Java";
+java.lessons = 15;
+java.completed = 6;
+System.out.println(java.progress());   // 40</div>
+</section>
+
+<section class="lesson" id="l8">
+    <span class="lesson-index">Lesson 8</span>
+    <h2>Constructors &amp; this</h2>
+    <p>A constructor is a special method, matching the class name, that runs automatically when you use <code>new</code>. The <code>this</code> keyword refers to the current object, most often needed to disambiguate a field from a parameter of the same name.</p>
+    <div class="lesson-example">public class Course {
+    String name;
+    int lessons;
+
+    public Course(String name, int lessons) {
+        this.name = name;         // this.name = field, name = parameter
+        this.lessons = lessons;
+    }
+}
+
+Course java = new Course("Java", 15);</div>
+    <p>Without <code>this.name = name</code>, the line would just reassign the parameter to itself and the field would stay uninitialized — <code>this</code> is what tells Java "the object's field," not "the local variable."</p>
+</section>
+
+<section class="lesson" id="l9">
+    <span class="lesson-index">Lesson 9</span>
+    <h2>Inheritance</h2>
+    <p><code>extends</code> lets one class inherit fields and methods from a parent, and <code>@Override</code> marks a method that intentionally replaces the parent's version — the compiler warns you if the signature doesn't actually match anything to override.</p>
+    <div class="lesson-example">public class CertifiedCourse extends Course {
+    boolean certified;
+
+    public CertifiedCourse(String name, int lessons) {
+        super(name, lessons);      // call the parent constructor
+    }
+
+    @Override
+    public String toString() {
+        return name + " (" + lessons + " lessons)";
+    }
+}</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of Course class at top with CertifiedCourse extending it below">
+        <rect x="120" y="10" width="160" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="200" y="36" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text)">class Course</text>
+        <line x1="200" y1="52" x2="200" y2="78" style="stroke:var(--ember);stroke-width:2" marker-end="url(#pc)"/>
+        <rect x="90" y="78" width="220" height="42" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="200" y="104" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">class CertifiedCourse extends Course</text>
+        <defs><marker id="pc" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--ember)"/></marker></defs>
+      </svg>
+      <figcaption>super(name, lessons) hands the constructor arguments up to Course before CertifiedCourse's own setup runs.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l10">
+    <span class="lesson-index">Lesson 10</span>
+    <h2>Interfaces &amp; Abstract Classes</h2>
+    <p>An <code>interface</code> declares method signatures with no implementation — a contract any class can <code>implement</code>. An <code>abstract class</code> can mix fully-implemented methods with abstract ones that subclasses must fill in.</p>
+    <div class="lesson-example">public interface Gradeable {
+    String grade();
+}
+
+public class Quiz implements Gradeable {
+    int score;
+
+    @Override
+    public String grade() {
+        return score &gt;= 50 ? "Pass" : "Fail";
+    }
+}</div>
+    <p>A class can <code>implement</code> multiple interfaces but only <code>extend</code> one class — interfaces are Java's way of sharing a contract across unrelated classes without the limits of single inheritance.</p>
+</section>
+
+<section class="lesson" id="l11">
+    <span class="lesson-index">Lesson 11</span>
+    <h2>Collections: ArrayList &amp; HashMap</h2>
+    <p>Unlike a fixed-size array, <code>ArrayList</code> grows and shrinks as needed. <code>HashMap</code> stores key-value pairs for fast lookup by key — both live in <code>java.util</code> and need to be imported.</p>
+    <div class="lesson-example">import java.util.ArrayList;
+import java.util.HashMap;
+
+ArrayList&lt;String&gt; courses = new ArrayList&lt;&gt;();
+courses.add("Java");
+courses.remove("Java");
+
+HashMap&lt;String, Integer&gt; progress = new HashMap&lt;&gt;();
+progress.put("Java", 40);
+System.out.println(progress.get("Java"));   // 40</div>
+    <p>The <code>&lt;String&gt;</code> and <code>&lt;String, Integer&gt;</code> angle brackets are generics — they tell the compiler exactly what type the collection holds, so putting the wrong type in is a compile error, not a runtime surprise.</p>
+</section>
+
+<section class="lesson" id="l12">
+    <span class="lesson-index">Lesson 12</span>
+    <h2>Exceptions</h2>
+    <p><code>try</code>/<code>catch</code>/<code>finally</code> handles errors, same shape as most languages. Java distinguishes <strong>checked</strong> exceptions (must be declared or caught, like <code>IOException</code>) from <strong>unchecked</strong> ones (like <code>ArithmeticException</code>) that the compiler doesn't force you to handle.</p>
+    <div class="lesson-example">public static int safeDivide(int a, int b) {
+    try {
+        return a / b;
+    } catch (ArithmeticException e) {
+        System.out.println("Can't divide by zero: " + e.getMessage());
+        return 0;
+    } finally {
+        System.out.println("Division attempted");
+    }
+}</div>
+    <p>Use <code>throw new IllegalArgumentException("message")</code> to raise your own exception when input is invalid — Java's standard library ships dozens of built-in exception types for common failure cases.</p>
+</section>
+
+<section class="lesson" id="l13">
+    <span class="lesson-index">Lesson 13</span>
+    <h2>Generics</h2>
+    <p>Generics let you write a class or method once that works with any type, while the compiler still enforces type safety — <code>Box&lt;String&gt;</code> and <code>Box&lt;Integer&gt;</code> share the same code but each only accepts its own type.</p>
+    <div class="lesson-example">public class Box&lt;T&gt; {
+    private T content;
+
+    public void set(T content) { this.content = content; }
+    public T get() { return content; }
+}
+
+Box&lt;String&gt; nameBox = new Box&lt;&gt;();
+nameBox.set("Java");
+
+Box&lt;Integer&gt; scoreBox = new Box&lt;&gt;();
+scoreBox.set(92);</div>
+    <p><code>T</code> is just a placeholder name (short for "Type") chosen by convention — the compiler substitutes the real type in wherever the generic is used, catching type mismatches before the program even runs.</p>
+</section>
+
+<section class="lesson" id="l14">
+    <span class="lesson-index">Lesson 14</span>
+    <h2>Static vs Instance</h2>
+    <p>A <code>static</code> field or method belongs to the <strong>class itself</strong>, shared across every instance — call it directly on the class name. An instance member belongs to each individual object and needs an object to be called on.</p>
+    <div class="lesson-example">public class Course {
+    static int totalCourses = 0;   // shared by every Course
+    String name;                    // unique per instance
+
+    public Course(String name) {
+        this.name = name;
+        totalCourses++;
+    }
+}
+
+new Course("HTML");
+new Course("Java");
+System.out.println(Course.totalCourses);   // 2</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing one shared static field at the class level versus separate instance fields per object">
+        <rect x="20" y="10" width="420" height="35" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="230" y="33" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">static totalCourses = 2 (one shared copy)</text>
+        <rect x="40" y="70" width="160" height="50" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="120" y="100" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text-muted)">instance: name="HTML"</text>
+        <rect x="260" y="70" width="160" height="50" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="340" y="100" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text-muted)">instance: name="Java"</text>
+      </svg>
+      <figcaption>Both Course objects read the same static totalCourses, but each keeps its own separate name field.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l15">
+    <span class="lesson-index">Lesson 15</span>
+    <h2>String Formatting &amp; Enums</h2>
+    <p><code>String.format</code> builds formatted text with placeholders, similar to an f-string. An <code>enum</code> defines a fixed, named set of constant values — safer than plain strings because the compiler rejects anything outside the set.</p>
+    <div class="lesson-example">enum Level { BEGINNER, INTERMEDIATE, ADVANCED }
+
+Level current = Level.BEGINNER;
+
+String summary = String.format(
+    "Course: %s | Progress: %d%% | Level: %s",
+    "Java", 40, current
+);
+System.out.println(summary);</div>
+    <p><code>switch (current)</code> over an enum only needs to list the enum's own values, and the compiler can warn you if a case is missing — a common source of copy-paste bugs with plain strings that enums close off entirely.</p>
+</section>
+
+</article>
+
+<!-- ================= PRACTICE CTA ================= -->
+<section class="practice-cta">
+    <p class="eyebrow center">&lt;your_turn /&gt;</p>
+    <h2>Ready to try Java for yourself?</h2>
+    <p>Head to the Playground — it'll open straight into Java mode.</p>
+    <a class="startBtn" href="playground.html?mode=java">Open Java Playground →</a>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

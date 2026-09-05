@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Learn C++ — Frontend Forge</title>
+<meta name="description" content="A detailed, example-driven C++ course: syntax, pointers, memory, OOP, STL containers and templates.">
+
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="course.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= COURSE HEADER ================= -->
+<section class="course-page-header">
+    <a class="back-link" href="courses.html">← Back to Courses</a>
+    <p class="eyebrow">&lt;course_06 /&gt;</p>
+    <h1>Learn <span class="ember-text">C++</span></h1>
+    <p>C++ gives you direct control over memory and performance, which is exactly why it powers game engines, operating systems and high-frequency trading systems. It's a stricter language, but understanding it makes every other language's abstractions click. Work through the lessons below, then try the code yourself in the Playground's C++ mode.</p>
+</section>
+
+<nav class="lesson-toc" aria-label="Lesson contents">
+    <a href="#l1">1. Setup &amp; Syntax</a>
+    <a href="#l2">2. Variables &amp; Types</a>
+    <a href="#l3">3. Conditionals</a>
+    <a href="#l4">4. Loops</a>
+    <a href="#l5">5. Arrays &amp; Vectors</a>
+    <a href="#l6">6. Functions</a>
+    <a href="#l7">7. Pointers</a>
+    <a href="#l8">8. References</a>
+    <a href="#l9">9. Classes &amp; Objects</a>
+    <a href="#l10">10. Constructors &amp; Destructors</a>
+    <a href="#l11">11. Inheritance &amp; Polymorphism</a>
+    <a href="#l12">12. Memory Management</a>
+    <a href="#l13">13. STL Containers</a>
+    <a href="#l14">14. Templates</a>
+    <a href="#l15">15. Standard Library Algorithms</a>
+</nav>
+
+<!-- ================= LESSONS ================= -->
+<article>
+
+<section class="lesson" id="l1">
+    <span class="lesson-index">Lesson 1</span>
+    <h2>Setup &amp; Program Structure</h2>
+    <p>Every C++ program starts execution in <code>main()</code>. <code>#include</code> pulls in a header so its functions become available, and <code>std::</code> prefixes names that come from the standard library's <code>std</code> namespace.</p>
+    <div class="lesson-example">#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt; "Hello, Frontend Forge!" &lt;&lt; std::endl;
+    return 0;
+}</div>
+    <p>C++ is <strong>compiled</strong> ahead of time into native machine code — a compiler like <code>g++</code> turns this source into an executable before it ever runs, which is why C++ programs tend to run faster than interpreted languages but need a build step first.</p>
+</section>
+
+<section class="lesson" id="l2">
+    <span class="lesson-index">Lesson 2</span>
+    <h2>Variables &amp; Types</h2>
+    <p>C++ is statically typed like Java, with fine-grained control over exactly how much memory a value takes — <code>int</code>, <code>double</code>, <code>char</code>, <code>bool</code>, and <code>std::string</code> for text.</p>
+    <div class="lesson-example">int lessons = 15;
+double rating = 4.9;
+bool isFree = true;
+char grade = 'A';
+std::string name = "C++";
+
+const int MAX_ATTEMPTS = 3;   // const = can't be reassigned</div>
+    <p><code>auto</code> lets the compiler infer a variable's type from its initializer — <code>auto lessons = 15;</code> is still strictly typed as <code>int</code> underneath, just without writing it out.</p>
+</section>
+
+<section class="lesson" id="l3">
+    <span class="lesson-index">Lesson 3</span>
+    <h2>Conditionals</h2>
+    <p><code>if</code>/<code>else if</code>/<code>else</code> and <code>switch</code> work much like Java's, with curly braces marking each block.</p>
+    <div class="lesson-example">int score = 72;
+std::string grade;
+
+if (score &gt;= 90) {
+    grade = "A";
+} else if (score &gt;= 70) {
+    grade = "B";
+} else {
+    grade = "C";
+}
+
+std::cout &lt;&lt; (score &gt;= 50 ? "Pass" : "Fail");</div>
+    <p>C++'s <code>switch</code> falls through to the next case unless you add <code>break;</code> — a common source of bugs, and one reason many style guides prefer chained <code>if</code>/<code>else if</code> for anything beyond a few simple cases.</p>
+</section>
+
+<section class="lesson" id="l4">
+    <span class="lesson-index">Lesson 4</span>
+    <h2>Loops</h2>
+    <p><code>for</code>, <code>while</code>, and <code>do-while</code> all exist, plus a range-based <code>for</code> for iterating a container directly without manual indexing.</p>
+    <div class="lesson-example">for (int i = 0; i &lt; 3; i++) {
+    std::cout &lt;&lt; i &lt;&lt; "\n";
+}
+
+std::vector&lt;std::string&gt; courses = {"HTML", "CSS", "C++"};
+for (const auto&amp; course : courses) {
+    std::cout &lt;&lt; course &lt;&lt; "\n";
+}</div>
+    <p><code>const auto&amp;</code> in the range-based loop avoids copying each element — <code>const</code> means the loop body can't modify it, and <code>&amp;</code> means it's a reference to the original, not a copy.</p>
+</section>
+
+<section class="lesson" id="l5">
+    <span class="lesson-index">Lesson 5</span>
+    <h2>Arrays &amp; Vectors</h2>
+    <p>A raw C-style array has a fixed size decided at compile time. <code>std::vector</code> (from the STL) is the modern, safer default — it resizes dynamically and manages its own memory.</p>
+    <div class="lesson-example">int scores[3] = {85, 92, 78};   // fixed-size array
+scores[0] = 90;
+
+std::vector&lt;int&gt; scoreList = {85, 92, 78};
+scoreList.push_back(95);         // grows automatically
+std::cout &lt;&lt; scoreList.size();  // 4</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram comparing a fixed-size array of 3 slots with a vector that has grown to 4 slots after push_back">
+        <text x="20" y="20" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text-dim)">int[3] — fixed</text>
+        <rect x="20" y="28" width="90" height="40" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <rect x="115" y="28" width="90" height="40" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <rect x="210" y="28" width="90" height="40" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="20" y="92" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--ember)">vector — grows</text>
+        <rect x="20" y="100" width="70" height="28" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <rect x="95" y="100" width="70" height="28" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <rect x="170" y="100" width="70" height="28" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <rect x="245" y="100" width="70" height="28" rx="6" style="fill:var(--ember-dim);stroke:var(--ember);stroke-dasharray:4,3"/>
+        <text x="280" y="119" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;fill:var(--ember)">new</text>
+      </svg>
+      <figcaption>push_back reallocates behind the scenes when needed — you never have to manage that resizing yourself.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l6">
+    <span class="lesson-index">Lesson 6</span>
+    <h2>Functions</h2>
+    <p>Like Java, a function's return type and parameter types are declared explicitly. Parameters are passed <strong>by value</strong> (a copy) unless you use a reference or pointer to modify the caller's original variable.</p>
+    <div class="lesson-example">int square(int n) {
+    return n * n;
+}
+
+void printProgress(std::string course, int percent) {
+    std::cout &lt;&lt; course &lt;&lt; ": " &lt;&lt; percent &lt;&lt; "%\n";
+}
+
+square(6);              // 36
+printProgress("C++", 25);</div>
+</section>
+
+<section class="lesson" id="l7">
+    <span class="lesson-index">Lesson 7</span>
+    <h2>Pointers</h2>
+    <p>A pointer stores a variable's <strong>memory address</strong> rather than its value directly. <code>&amp;</code> gets the address of a variable, and <code>*</code> either declares a pointer or dereferences one to reach the value it points to.</p>
+    <div class="lesson-example">int lessons = 15;
+int* ptr = &amp;lessons;    // ptr holds the address of lessons
+
+std::cout &lt;&lt; ptr;        // prints the memory address
+std::cout &lt;&lt; *ptr;       // prints 15 — dereferenced
+
+*ptr = 20;                // changes lessons through the pointer
+std::cout &lt;&lt; lessons;    // 20</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a pointer variable holding the memory address of another variable, with an arrow pointing from the pointer box to the value box">
+        <rect x="20" y="60" width="150" height="50" rx="8" style="fill:var(--surface-2);stroke:var(--ember)"/>
+        <text x="95" y="82" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--ember)">ptr</text>
+        <text x="95" y="100" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;fill:var(--text-muted)">0x7ffee...</text>
+        <path d="M170,85 C220,85 220,20 270,20" style="fill:none;stroke:var(--ember);stroke-width:2" marker-end="url(#pd)"/>
+        <rect x="270" y="0" width="150" height="50" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="345" y="22" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">lessons</text>
+        <text x="345" y="40" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">20</text>
+        <defs><marker id="pd" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--ember)"/></marker></defs>
+      </svg>
+      <figcaption>ptr doesn't hold 20 itself — it holds the address where 20 actually lives, so *ptr always reads the current value.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l8">
+    <span class="lesson-index">Lesson 8</span>
+    <h2>References</h2>
+    <p>A reference is an alias for an existing variable — declared with <code>&amp;</code> at the type, not the variable name — and unlike a pointer it can't be null or reassigned to refer to something else. Passing by reference lets a function modify the caller's variable without pointer syntax.</p>
+    <div class="lesson-example">void addLesson(int&amp; total) {
+    total = total + 1;      // modifies the caller's variable directly
+}
+
+int lessons = 15;
+addLesson(lessons);
+std::cout &lt;&lt; lessons;      // 16</div>
+    <p>Rule of thumb: prefer references for function parameters when you just need to read or modify an existing value, and reach for pointers when you need the ability to represent "no value" (<code>nullptr</code>) or to reassign what's being pointed to.</p>
+</section>
+
+<section class="lesson" id="l9">
+    <span class="lesson-index">Lesson 9</span>
+    <h2>Classes &amp; Objects</h2>
+    <p>A C++ class groups data and methods, with <code>public</code>/<code>private</code> controlling access. Private members are only reachable from inside the class's own methods — the basis of encapsulation.</p>
+    <div class="lesson-example">class Course {
+private:
+    int completed = 0;
+
+public:
+    std::string name;
+    int lessons;
+
+    int progress() {
+        return completed * 100 / lessons;
+    }
+};
+
+Course cpp;
+cpp.name = "C++";
+cpp.lessons = 15;</div>
+    <p><code>completed</code> being <code>private</code> means outside code can't touch it directly — only <code>Course</code>'s own methods can, which is what keeps an object's internal state from being changed in ways the class didn't intend.</p>
+</section>
+
+<section class="lesson" id="l10">
+    <span class="lesson-index">Lesson 10</span>
+    <h2>Constructors &amp; Destructors</h2>
+    <p>A constructor initializes an object when it's created; a destructor (prefixed <code>~</code>) runs automatically when the object goes out of scope or is deleted — the natural place to release any resources it was holding.</p>
+    <div class="lesson-example">class Course {
+public:
+    std::string name;
+
+    Course(std::string n) : name(n) {   // constructor
+        std::cout &lt;&lt; name &lt;&lt; " created\n";
+    }
+
+    ~Course() {                          // destructor
+        std::cout &lt;&lt; name &lt;&lt; " destroyed\n";
+    }
+};
+
+{
+    Course cpp("C++");
+}   // destructor runs automatically here, at end of scope</div>
+    <p>This automatic cleanup at end-of-scope is called <strong>RAII</strong> (Resource Acquisition Is Initialization) — it's the core idiom that makes C++ memory-safe without needing a garbage collector, as long as resources are wrapped in objects like this.</p>
+</section>
+
+<section class="lesson" id="l11">
+    <span class="lesson-index">Lesson 11</span>
+    <h2>Inheritance &amp; Polymorphism</h2>
+    <p><code>: public Base</code> inherits from a parent class. Marking a method <code>virtual</code> enables <strong>polymorphism</strong> — calling it through a base-class pointer runs the derived class's version, not the base's.</p>
+    <div class="lesson-example">class Course {
+public:
+    virtual std::string describe() {
+        return "A course";
+    }
+};
+
+class CertifiedCourse : public Course {
+public:
+    std::string describe() override {
+        return "A certified course";
+    }
+};
+
+Course* c = new CertifiedCourse();
+std::cout &lt;&lt; c-&gt;describe();   // "A certified course"</div>
+    <p>Without <code>virtual</code>, that same call would print "A course" — the base class's version — because the compiler would resolve the method by the pointer's declared type, not the object's actual type.</p>
+</section>
+
+<section class="lesson" id="l12">
+    <span class="lesson-index">Lesson 12</span>
+    <h2>Memory Management</h2>
+    <p><code>new</code> allocates memory on the heap that lasts until you explicitly free it with <code>delete</code> — forget to, and it's a memory leak. Modern C++ prefers <strong>smart pointers</strong> that free memory automatically when nothing references it anymore.</p>
+    <div class="lesson-example">int* raw = new int(15);
+delete raw;                          // must free manually
+
+#include &lt;memory&gt;
+std::unique_ptr&lt;int&gt; smart = std::make_unique&lt;int&gt;(15);
+// freed automatically when smart goes out of scope — no delete needed</div>
+    <p><code>std::unique_ptr</code> owns its memory exclusively and cleans up via the same RAII pattern as destructors; <code>std::shared_ptr</code> allows multiple owners and frees the memory once the last one goes out of scope.</p>
+</section>
+
+<section class="lesson" id="l13">
+    <span class="lesson-index">Lesson 13</span>
+    <h2>STL Containers</h2>
+    <p>The Standard Template Library ships ready-made data structures beyond <code>vector</code>: <code>std::map</code> for key-value pairs (kept sorted by key), <code>std::set</code> for unique values, and <code>std::pair</code> for bundling two values together.</p>
+    <div class="lesson-example">#include &lt;map&gt;
+#include &lt;set&gt;
+
+std::map&lt;std::string, int&gt; progress;
+progress["C++"] = 25;
+progress["Java"] = 40;
+
+std::set&lt;std::string&gt; completed = {"html", "css"};
+completed.insert("cpp");
+
+std::pair&lt;std::string, int&gt; top("C++", 25);</div>
+    <p>Every STL container shares a consistent interface — <code>.size()</code>, <code>.begin()</code>, <code>.end()</code> — which is exactly what lets generic algorithms like <code>std::sort</code> work on almost any of them without modification.</p>
+</section>
+
+<section class="lesson" id="l14">
+    <span class="lesson-index">Lesson 14</span>
+    <h2>Templates</h2>
+    <p>A template lets you write one function or class that works with any type, with the compiler generating a specialized version for each type actually used — this is how <code>std::vector&lt;T&gt;</code> itself is implemented.</p>
+    <div class="lesson-example">template &lt;typename T&gt;
+T maxOf(T a, T b) {
+    return (a &gt; b) ? a : b;
+}
+
+maxOf(3, 7);        // works with int
+maxOf(3.5, 2.1);     // works with double
+maxOf(std::string("a"), std::string("b"));   // works with string</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of one template function generating separate compiled versions for int, double and string">
+        <rect x="160" y="10" width="140" height="40" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="230" y="35" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">maxOf&lt;T&gt;</text>
+        <line x1="180" y1="50" x2="80" y2="85" style="stroke:var(--border);stroke-width:2" marker-end="url(#pe)"/>
+        <line x1="230" y1="50" x2="230" y2="85" style="stroke:var(--border);stroke-width:2" marker-end="url(#pe)"/>
+        <line x1="280" y1="50" x2="380" y2="85" style="stroke:var(--border);stroke-width:2" marker-end="url(#pe)"/>
+        <rect x="20" y="90" width="120" height="35" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="80" y="112" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text-muted)">maxOf&lt;int&gt;</text>
+        <rect x="170" y="90" width="120" height="35" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="230" y="112" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text-muted)">maxOf&lt;double&gt;</text>
+        <rect x="320" y="90" width="120" height="35" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="380" y="112" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text-muted)">maxOf&lt;string&gt;</text>
+        <defs><marker id="pe" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--border)"/></marker></defs>
+      </svg>
+      <figcaption>The compiler stamps out a real, type-specific version of maxOf for every distinct type it's called with.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l15">
+    <span class="lesson-index">Lesson 15</span>
+    <h2>Standard Library Algorithms</h2>
+    <p><code>&lt;algorithm&gt;</code> provides ready-made, well-tested operations — sorting, searching, transforming — that work across any STL container through iterators, so you rarely need to hand-write a sort or search loop yourself.</p>
+    <div class="lesson-example">#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+
+std::vector&lt;int&gt; scores = {72, 95, 40, 88};
+
+std::sort(scores.begin(), scores.end());
+
+bool anyFailing = std::any_of(scores.begin(), scores.end(),
+                               [](int s) { return s &lt; 50; });
+
+auto it = std::find(scores.begin(), scores.end(), 88);</div>
+    <p>The <code>[](int s) { return s &lt; 50; }</code> is a <strong>lambda</strong> — a small anonymous function defined inline, exactly where it's needed, without giving it a separate name.</p>
+</section>
+
+</article>
+
+<!-- ================= PRACTICE CTA ================= -->
+<section class="practice-cta">
+    <p class="eyebrow center">&lt;your_turn /&gt;</p>
+    <h2>Ready to try C++ for yourself?</h2>
+    <p>Head to the Playground — it'll open straight into C++ mode.</p>
+    <a class="startBtn" href="playground.html?mode=cpp">Open C++ Playground →</a>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

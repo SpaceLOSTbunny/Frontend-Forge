@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Frontend Forge — Learn to Build the Web</title>
+<meta name="description" content="Learn HTML, CSS and JavaScript through interactive lessons, a live playground and hands-on quizzes.">
+
+<!-- Mobile / PWA — lets the site be added to the home screen on
+     Android and iOS and gives it an app-like theme color / status bar. -->
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="script.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+    <p class="eyebrow">&lt;forge_your_skills /&gt;</p>
+    <div class="hero-text">
+        <h1>Hammer Your Code To <span class="ember-text">Perfection.</span></h1>
+        <p>
+            Learn HTML, CSS and JavaScript through interactive lessons,
+            quizzes, playgrounds and coding challenges.
+        </p>
+        <div class="hero-actions">
+            <button class="startBtn" id="startLearningBtn">
+                <span>Start Learning</span>
+            </button>
+            <a href="playground.html" class="ghostBtn">Try the Playground →</a>
+        </div>
+    </div>
+</section>
+
+<div class="spark-divider" aria-hidden="true"></div>
+
+<!-- ================= FEATURES ================= -->
+<section class="features">
+    <p class="eyebrow center">&lt;why_forge /&gt;</p>
+    <h2>Why Frontend Forge?</h2>
+
+    <div class="feature-container">
+        <div class="card">
+            <span class="card-icon">📚</span>
+            <h3>Interactive Lessons</h3>
+            <p>Learn every topic from beginner to advanced with examples.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">💻</span>
+            <h3>Live Playground</h3>
+            <p>Write HTML, CSS and JavaScript directly in your browser.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">📝</span>
+            <h3>MCQ Tests</h3>
+            <p>Test your knowledge with a randomized set of quiz questions.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">✏️</span>
+            <h3>Fill In The Blanks</h3>
+            <p>Improve coding concepts through practice questions.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">🏆</span>
+            <h3>Earn Badges</h3>
+            <p>Unlock achievements while completing lessons.</p>
+        </div>
+        <div class="card">
+            <span class="card-icon">📈</span>
+            <h3>Track Progress</h3>
+            <p>Save your learning progress using local storage.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

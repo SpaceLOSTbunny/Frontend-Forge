@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Courses — Frontend Forge</title>
+<meta name="description" content="Choose a course: HTML, CSS, JavaScript, Python, Java or C++.">
+
+<!-- Mobile / PWA — lets the site be added to the home screen on
+     Android and iOS and gives it an app-like theme color / status bar. -->
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="script.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= COURSES ================= -->
+<section id="courses">
+    <p class="eyebrow center">&lt;curriculum /&gt;</p>
+    <h2>Choose Your Course</h2>
+
+    <div class="course-container">
+        <div class="course-card" data-course="html">
+            <span class="course-index">01</span>
+            <h1>HTML</h1>
+            <p>Learn the structure of every website from scratch.</p>
+            <a class="courseBtn" href="html-course.html" data-course="html">Start HTML</a>
+        </div>
+
+        <div class="course-card" data-course="css">
+            <span class="course-index">02</span>
+            <h1>CSS</h1>
+            <p>Master styling, layouts, animations and responsive design.</p>
+            <a class="courseBtn" href="css-course.html" data-course="css">Start CSS</a>
+        </div>
+
+        <div class="course-card" data-course="javascript">
+            <span class="course-index">03</span>
+            <h1>JavaScript</h1>
+            <p>Learn programming, DOM, events and projects.</p>
+            <a class="courseBtn" href="js-course.html" data-course="javascript">Start JavaScript</a>
+        </div>
+
+        <div class="course-card" data-course="python">
+            <span class="course-index">04</span>
+            <h1>Python</h1>
+            <p>Friendly, readable syntax for scripting, OOP and beyond.</p>
+            <a class="courseBtn" href="python-course.html" data-course="python">Start Python</a>
+        </div>
+
+        <div class="course-card" data-course="java">
+            <span class="course-index">05</span>
+            <h1>Java</h1>
+            <p>Strictly-typed OOP behind Android apps and enterprise systems.</p>
+            <a class="courseBtn" href="java-course.html" data-course="java">Start Java</a>
+        </div>
+
+        <div class="course-card" data-course="cpp">
+            <span class="course-index">06</span>
+            <h1>C++</h1>
+            <p>Pointers, memory and performance under the hood.</p>
+            <a class="courseBtn" href="cpp-course.html" data-course="cpp">Start C++</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

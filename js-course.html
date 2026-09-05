@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Learn JavaScript — Frontend Forge</title>
+<meta name="description" content="A detailed, example-driven JavaScript course: variables, functions, arrays, the DOM, events, and objects.">
+
+<!-- Mobile / PWA — lets the site be added to the home screen on
+     Android and iOS and gives it an app-like theme color / status bar. -->
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="course.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= COURSE HEADER ================= -->
+<section class="course-page-header">
+    <a class="back-link" href="courses.html">← Back to Courses</a>
+    <p class="eyebrow">&lt;course_03 /&gt;</p>
+    <h1>Learn <span class="ember-text">JavaScript</span></h1>
+    <p>JavaScript brings a page to life — it reacts to clicks, updates content, and talks to servers. Work through the lessons below, then head to the Practice Zone to test what you've learned.</p>
+</section>
+
+<nav class="lesson-toc" aria-label="Lesson contents">
+    <a href="#l1">1. Variables</a>
+    <a href="#l2">2. Functions</a>
+    <a href="#l3">3. Arrays &amp; Loops</a>
+    <a href="#l4">4. The DOM</a>
+    <a href="#l5">5. Events</a>
+    <a href="#l6">6. Objects &amp; JSON</a>
+    <a href="#l7">7. Async &amp; Fetch</a>
+    <a href="#l8">8. Error Handling</a>
+    <a href="#l9">9. ES6+ Features</a>
+    <a href="#l10">10. The Event Loop</a>
+    <a href="#l11">11. Array Methods Deep Dive</a>
+    <a href="#l12">12. Closures &amp; Scope</a>
+    <a href="#l13">13. Classes &amp; OOP</a>
+    <a href="#l14">14. Modules</a>
+    <a href="#l15">15. Web Storage &amp; JSON</a>
+</nav>
+
+<!-- ================= LESSONS ================= -->
+<article>
+
+<section class="lesson" id="l1">
+    <span class="lesson-index">Lesson 1</span>
+    <h2>Variables &amp; Data Types</h2>
+    <p>Modern JavaScript uses <code>let</code> for values that change and <code>const</code> for values that don't — prefer <code>const</code> by default. The core data types are strings, numbers, booleans, arrays, objects, and <code>null</code>/<code>undefined</code>.</p>
+    <div class="lesson-example">const name = "Ada";       // string
+let score = 95;           // number
+const isActive = true;    // boolean
+let user = null;          // explicitly empty
+
+console.log(typeof score); // "number"</div>
+    <p>Avoid the older <code>var</code> keyword — <code>let</code> and <code>const</code> are scoped to the block they're declared in, which avoids a whole class of bugs.</p>
+</section>
+
+<section class="lesson" id="l2">
+    <span class="lesson-index">Lesson 2</span>
+    <h2>Functions &amp; Conditionals</h2>
+    <p>Functions package up reusable logic. Arrow functions (<code>=&gt;</code>) are a compact modern syntax. <code>if</code>/<code>else</code> branches let code make decisions based on a condition.</p>
+    <div class="lesson-example">function greet(user) {
+  if (user) {
+    return `Hello, ${user}!`;
+  } else {
+    return "Hello, stranger!";
+  }
+}
+
+const double = n => n * 2;
+console.log(greet("Ada")); // "Hello, Ada!"</div>
+    <p>Template literals — strings wrapped in backticks — let you embed variables directly inside <code>$&#123;&#125;</code> placeholders instead of clunky string concatenation.</p>
+</section>
+
+<section class="lesson" id="l3">
+    <span class="lesson-index">Lesson 3</span>
+    <h2>Arrays &amp; Loops</h2>
+    <p>Arrays hold ordered lists of values. Rather than manual <code>for</code> loops, modern JS favors array methods like <code>map()</code>, <code>filter()</code>, and <code>forEach()</code> for transforming and iterating over data.</p>
+    <div class="lesson-example">const nums = [1, 2, 3, 4, 5];
+
+const doubled = nums.map(n => n * 2);
+const evens = nums.filter(n => n % 2 === 0);
+
+nums.forEach(n => console.log(n));
+// doubled -> [2, 4, 6, 8, 10]
+// evens   -> [2, 4]</div>
+    <p><code>map()</code> always returns a new array the same length as the original; <code>filter()</code> returns a new array with only the items that pass a test.</p>
+</section>
+
+<section class="lesson" id="l4">
+    <span class="lesson-index">Lesson 4</span>
+    <h2>The DOM</h2>
+    <p>The DOM (Document Object Model) is how JavaScript sees and changes the page. <code>document.querySelector()</code> finds an element using a CSS-style selector, and you can then read or update its content and attributes.</p>
+    <div class="lesson-example">const heading = document.querySelector('h1');
+heading.textContent = "Updated title!";
+
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => card.classList.add('visible'));</div>
+    <p>Use <code>textContent</code> to safely set plain text — avoid <code>innerHTML</code> with any data you didn't write yourself, since it can open the door to injection attacks.</p>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 620 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DOM tree diagram: document contains html, which contains head and body; body contains h1 and p, with h1 highlighted as the element found by querySelector">
+        <g style="stroke:var(--border);stroke-width:2">
+          <line x1="310" y1="52" x2="310" y2="90"/>
+          <line x1="310" y1="132" x2="150" y2="170"/>
+          <line x1="310" y1="132" x2="470" y2="170"/>
+          <line x1="470" y1="212" x2="385" y2="250"/>
+          <line x1="470" y1="212" x2="530" y2="250"/>
+        </g>
+        <rect x="250" y="10" width="120" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="310" y="36" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text-muted)">document</text>
+
+        <rect x="250" y="90" width="120" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="310" y="116" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text-muted)">&lt;html&gt;</text>
+
+        <rect x="90" y="170" width="120" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="150" y="196" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text-muted)">&lt;head&gt;</text>
+
+        <rect x="410" y="170" width="120" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="470" y="196" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text-muted)">&lt;body&gt;</text>
+
+        <rect x="325" y="250" width="120" height="42" rx="8" style="fill:var(--ember-dim);stroke:var(--ember);stroke-width:2;stroke-dasharray:4 3"/>
+        <text x="385" y="276" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text)">&lt;h1&gt;</text>
+
+        <rect x="470" y="250" width="120" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="530" y="276" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text-muted)">&lt;p&gt;</text>
+
+        <text x="385" y="306" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--ember)">← found by querySelector('h1')</text>
+      </svg>
+      <figcaption>The DOM mirrors the HTML tree exactly — <code>document.querySelector('h1')</code> walks it to find the first matching node.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l5">
+    <span class="lesson-index">Lesson 5</span>
+    <h2>Events</h2>
+    <p><code>addEventListener()</code> runs a function whenever something happens — a click, a keypress, a form submission. It's the bridge between user actions and your code.</p>
+    <div class="lesson-example">const btn = document.querySelector('#saveBtn');
+
+btn.addEventListener('click', () => {
+  console.log('Saved!');
+});
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // stop the page from reloading
+});</div>
+    <p><code>e.preventDefault()</code> is essential on form submissions when you want to handle the data with JavaScript instead of letting the browser do a full page reload.</p>
+</section>
+
+<section class="lesson" id="l6">
+    <span class="lesson-index">Lesson 6</span>
+    <h2>Objects &amp; JSON</h2>
+    <p>Objects group related data as key-value pairs. JSON (JavaScript Object Notation) is the text format used to send that data across the web — <code>JSON.stringify()</code> and <code>JSON.parse()</code> convert between the two.</p>
+    <div class="lesson-example">const user = {
+  name: "Ada",
+  role: "developer"
+};
+
+const json = JSON.stringify(user);
+// '{"name":"Ada","role":"developer"}'
+
+const parsed = JSON.parse(json);
+console.log(parsed.name); // "Ada"</div>
+    <p>This same pattern powers <code>localStorage</code> — since it only stores strings, objects are <code>stringify</code>'d before saving and <code>parse</code>'d back after reading.</p>
+</section>
+
+<section class="lesson" id="l7">
+    <span class="lesson-index">Lesson 7</span>
+    <h2>Async JavaScript &amp; Fetch</h2>
+    <p>Some operations — reading a file, waiting on a network request — take time and shouldn't freeze the page while they run. A <code>Promise</code> represents a value that will exist eventually, and <code>async</code>/<code>await</code> is the modern, readable way to work with one.</p>
+    <div class="lesson-example">async function loadUser() {
+  try {
+    const res = await fetch('/api/user');
+    const data = await res.json();
+    console.log(data.name);
+  } catch (err) {
+    console.error('Failed to load:', err.message);
+  }
+}</div>
+    <p><code>await</code> pauses a function until its Promise settles, so asynchronous code reads top-to-bottom like ordinary code instead of nesting callbacks inside callbacks. Always wrap it in <code>try</code>/<code>catch</code> — a dropped connection or a bad response will throw, and an uncaught error in an <code>async</code> function otherwise fails silently.</p>
+</section>
+
+<section class="lesson" id="l8">
+    <span class="lesson-index">Lesson 8</span>
+    <h2>Error Handling</h2>
+    <p><code>try</code>/<code>catch</code> lets your code fail gracefully instead of crashing the whole page. <code>throw</code> stops execution and hands an error to the nearest <code>catch</code>; an optional <code>finally</code> block always runs afterward, whether or not an error happened.</p>
+    <div class="lesson-example">function divide(a, b) {
+  if (b === 0) throw new Error('Cannot divide by zero');
+  return a / b;
+}
+
+try {
+  console.log(divide(10, 0));
+} catch (err) {
+  console.error(err.message);
+} finally {
+  console.log('Done attempting the division.');
+}</div>
+    <p>This exact pattern is what keeps a typo in the Playground above from crashing the whole page — your code runs inside a <code>try</code>/<code>catch</code>, and any error gets caught and printed to the console panel instead of breaking the preview.</p>
+</section>
+
+<section class="lesson" id="l9">
+    <span class="lesson-index">Lesson 9</span>
+    <h2>ES6+ Features: Destructuring &amp; Spread</h2>
+    <p>Destructuring unpacks values out of an object or array into their own variables in a single line. The spread operator (<code>...</code>) does the reverse — it expands an array or object's contents, which is perfect for merging data or copying it without mutating the original.</p>
+    <div class="lesson-example">const user = { name: 'Ada', role: 'developer' };
+const { name, role } = user; // destructuring
+
+const nums = [1, 2, 3];
+const [first, ...rest] = nums; // rest -> [2, 3]
+
+const merged = { ...user, active: true }; // spread</div>
+    <p>You'll see this exact spread pattern all over Frontend Forge's own code — merging a saved progress object with sensible defaults, or copying a quiz question while adding a <code>topic</code> field, all without ever mutating the original data.</p>
+</section>
+
+<section class="lesson" id="l10">
+    <span class="lesson-index">Lesson 10</span>
+    <h2>The Event Loop</h2>
+    <p>JavaScript runs on a single thread, yet <code>setTimeout</code>, DOM events, and <code>fetch</code> all seem to happen "in the background." The trick is the <strong>event loop</strong>: slow work is handed off to browser Web APIs, and only its callback comes back — waiting in a queue until the call stack is completely empty.</p>
+    <div class="lesson-example">console.log('1: start');
+
+setTimeout(() => console.log('2: timeout callback'), 0);
+
+console.log('3: end');
+
+// Logs in order: 1, 3, 2 — even with a 0ms delay,
+// the timeout callback waits for the stack to clear first.</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 560 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the event loop: the call stack hands timers and fetch calls to Web APIs, which push finished callbacks into a callback queue, which the event loop moves back onto the call stack once it's empty">
+        <rect x="20" y="20" width="150" height="180" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="95" y="45" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">Call Stack</text>
+        <rect x="35" y="150" width="120" height="30" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="95" y="170" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text)">main()</text>
+
+        <rect x="215" y="20" width="150" height="80" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="290" y="45" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">Web APIs</text>
+        <text x="290" y="70" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">setTimeout, fetch,</text>
+        <text x="290" y="86" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">DOM events</text>
+
+        <rect x="215" y="140" width="150" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="290" y="165" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">Callback Queue</text>
+        <text x="290" y="185" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">() =&gt; { ... }</text>
+
+        <rect x="410" y="80" width="130" height="60" rx="8" style="fill:var(--ember);fill-opacity:0.2;stroke:var(--ember)"/>
+        <text x="475" y="105" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">Event Loop</text>
+        <text x="475" y="122" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;fill:var(--text-muted)">stack empty?</text>
+
+        <g style="stroke:var(--ember-hot);stroke-width:1.6;fill:none" marker-end="url(#arr)">
+          <path d="M170,60 L215,60"/>
+          <path d="M290,100 L290,140"/>
+          <path d="M365,170 Q410,170 410,140"/>
+          <path d="M475,80 Q475,20 170,20 Q170,120 170,160"/>
+        </g>
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--ember-hot)"/></marker>
+        </defs>
+      </svg>
+      <figcaption>Web APIs hand finished work to the callback queue; the event loop only moves it onto the call stack once the stack is empty.</figcaption>
+    </figure>
+
+    <p>This is exactly why a <code>0ms</code> <code>setTimeout</code> never runs immediately — it still has to wait its turn behind whatever synchronous code is currently running.</p>
+</section>
+
+<section class="lesson" id="l11">
+    <span class="lesson-index">Lesson 11</span>
+    <h2>Array Methods Deep Dive: reduce() &amp; sort()</h2>
+    <p><code>reduce()</code> is the most general array method — it walks through every item, combining it with an accumulator, and returns one final value. <code>sort()</code> reorders an array in place; without a compare function it sorts alphabetically, even for numbers, which is a classic bug.</p>
+    <div class="lesson-example">const scores = [10, 25, 15, 30];
+
+const total = scores.reduce((sum, n) => sum + n, 0);
+// sum starts at 0, then adds each score in turn
+
+const sorted = [...scores].sort((a, b) => a - b);
+// (a, b) => a - b sorts numerically, ascending
+console.log(total, sorted); // 80  [10, 15, 25, 30]</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar graph of the array 10, 25, 15, 30, with an arrow showing reduce combining them into a total of 80">
+        <line x1="30" y1="150" x2="330" y2="150" style="stroke:var(--border);stroke-width:1.5"/>
+        <rect x="45" y="120" width="50" height="30" style="fill:var(--ember-dim)"/>
+        <text x="70" y="112" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">10</text>
+        <rect x="115" y="75" width="50" height="75" style="fill:var(--ember-dim)"/>
+        <text x="140" y="67" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">25</text>
+        <rect x="185" y="105" width="50" height="45" style="fill:var(--ember-dim)"/>
+        <text x="210" y="97" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">15</text>
+        <rect x="255" y="60" width="50" height="90" style="fill:var(--ember-dim)"/>
+        <text x="280" y="52" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">30</text>
+
+        <path d="M340,100 L400,100" style="stroke:var(--ember-hot);stroke-width:2;fill:none" marker-end="url(#arr2)"/>
+        <text x="370" y="90" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;fill:var(--ember-hot)">reduce</text>
+        <defs>
+          <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--ember-hot)"/></marker>
+        </defs>
+
+        <rect x="410" y="65" width="90" height="70" rx="8" style="fill:var(--ember);fill-opacity:0.2;stroke:var(--ember)"/>
+        <text x="455" y="105" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:18px;fill:var(--text)">80</text>
+        <text x="455" y="155" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:10.5px;fill:var(--text-muted)">total</text>
+      </svg>
+      <figcaption>reduce() folds the whole array down into a single accumulated value, one item at a time.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l12">
+    <span class="lesson-index">Lesson 12</span>
+    <h2>Closures &amp; Scope</h2>
+    <p>A function remembers the variables that were in scope where it was <em>defined</em>, not where it's called — that's a <strong>closure</strong>. It's how a counter function can keep its own private count between calls without any global variable.</p>
+    <div class="lesson-example">function makeCounter() {
+  let count = 0;               // lives in makeCounter's scope
+  return function () {
+    count++;                   // inner function "closes over" count
+    return count;
+  };
+}
+
+const counter = makeCounter();
+counter(); // 1
+counter(); // 2 — count persisted between calls</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of nested scopes: global scope containing the makeCounter function scope, which contains the inner returned function scope, with a dot representing the closed-over count variable">
+        <rect x="10" y="10" width="460" height="200" rx="10" style="fill:none;stroke:var(--text-dim);stroke-width:1.5;stroke-dasharray:5 5"/>
+        <text x="24" y="32" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text-dim)">global scope</text>
+
+        <rect x="40" y="45" width="400" height="140" rx="10" style="fill:var(--surface-2);stroke:var(--ember-dim)"/>
+        <text x="54" y="68" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--ember-dim)">makeCounter() scope</text>
+
+        <circle cx="70" cy="95" r="6" style="fill:var(--ember)"/>
+        <text x="86" y="99" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">let count = 0</text>
+
+        <rect x="70" y="115" width="340" height="55" rx="8" style="fill:var(--ember);fill-opacity:0.12;stroke:var(--ember)"/>
+        <text x="84" y="138" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">returned inner function</text>
+        <text x="84" y="156" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">still reads/writes count →</text>
+        <circle cx="380" cy="152" r="5" style="fill:var(--ember)"/>
+      </svg>
+      <figcaption>Even after makeCounter() finishes running, the inner function keeps a live link back to its count variable.</figcaption>
+    </figure>
+
+    <p>This is precisely how the Playground's own state stays isolated — each editor instance is wrapped in a function whose closed-over variables no other part of the page can reach or accidentally overwrite.</p>
+</section>
+
+<section class="lesson" id="l13">
+    <span class="lesson-index">Lesson 13</span>
+    <h2>Classes &amp; OOP</h2>
+    <p>A <code>class</code> is a template for creating objects that share the same methods. <code>constructor</code> runs when you write <code>new ClassName(...)</code>, and <code>extends</code> lets one class inherit and override behavior from another — the same pattern behind almost every UI framework's components.</p>
+    <div class="lesson-example">class Course {
+  constructor(name, lessons) {
+    this.name = name;
+    this.lessons = lessons;
+    this.completed = 0;
+  }
+  progress() {
+    return Math.round((this.completed / this.lessons) * 100);
+  }
+}
+
+class CertifiedCourse extends Course {
+  constructor(name, lessons) {
+    super(name, lessons);   // call the parent constructor
+    this.certified = false;
+  }
+}
+
+const html = new CertifiedCourse('HTML', 15);
+html.completed = 9;
+html.progress(); // 60</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of class inheritance: Course class at top, CertifiedCourse extends it below, an instance created from CertifiedCourse at the bottom">
+        <rect x="150" y="10" width="160" height="45" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="230" y="37" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">class Course</text>
+        <line x1="230" y1="55" x2="230" y2="80" style="stroke:var(--ember);stroke-width:2" marker-end="url(#a3)"/>
+        <text x="245" y="72" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--ember)">extends</text>
+        <rect x="130" y="80" width="200" height="45" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="230" y="107" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text)">class CertifiedCourse</text>
+        <line x1="230" y1="125" x2="230" y2="150" style="stroke:var(--border);stroke-width:2" marker-end="url(#a3)"/>
+        <text x="245" y="142" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">new</text>
+        <defs><marker id="a3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--ember)"/></marker></defs>
+      </svg>
+      <figcaption>html is an instance of CertifiedCourse, which inherits every method Course defines plus its own.</figcaption>
+    </figure>
+    <p>Under the hood, classes are still JavaScript's regular prototype chain with friendlier syntax — <code>html.progress()</code> works because JavaScript walks up from the instance to <code>CertifiedCourse.prototype</code> to <code>Course.prototype</code> looking for the method.</p>
+</section>
+
+<section class="lesson" id="l14">
+    <span class="lesson-index">Lesson 14</span>
+    <h2>Modules: import &amp; export</h2>
+    <p>ES modules split code across files instead of one giant script. Each file has its own scope by default — nothing leaks into the global namespace — and you explicitly choose what to <code>export</code> and what to <code>import</code> elsewhere.</p>
+    <div class="lesson-example">// progress.js
+export const STORAGE_KEY = 'forge_progress';
+
+export function loadProgress() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+}
+
+export default class ProgressTracker { /* ... */ }
+
+// main.js
+import ProgressTracker, { loadProgress, STORAGE_KEY } from './progress.js';
+
+&lt;script type="module" src="main.js"&gt;&lt;/script&gt;</div>
+    <p>A <code>default</code> export is imported without curly braces and can be renamed freely; named exports (<code>{ loadProgress }</code>) must match the exported name unless you use <code>as</code>. The browser needs <code>type="module"</code> on the <code>&lt;script&gt;</code> tag to enable this syntax at all.</p>
+</section>
+
+<section class="lesson" id="l15">
+    <span class="lesson-index">Lesson 15</span>
+    <h2>Web Storage &amp; JSON in JavaScript</h2>
+    <p><code>JSON.stringify()</code> turns a JavaScript object into a text string that can be saved to <code>localStorage</code>, sent over the network, or logged; <code>JSON.parse()</code> reverses it. Together they're how any structured data survives a page reload.</p>
+    <div class="lesson-example">function saveProgress(state) {
+  localStorage.setItem('forge_progress', JSON.stringify(state));
+}
+
+function loadProgress() {
+  const raw = localStorage.getItem('forge_progress');
+  return raw ? JSON.parse(raw) : { courses: {}, quizBest: 0 };
+}
+
+const state = loadProgress();
+state.quizBest = Math.max(state.quizBest, 92);
+saveProgress(state);</div>
+    <p>Functions, <code>undefined</code>, and circular references can't survive <code>JSON.stringify</code> — they're silently dropped or throw. Wrap <code>JSON.parse</code> in a <code>try/catch</code> too, since corrupted or hand-edited storage will throw a <code>SyntaxError</code> rather than fail quietly.</p>
+</section>
+
+</article>
+
+<!-- ================= PRACTICE CTA ================= -->
+<section class="practice-cta">
+    <p class="eyebrow center">&lt;your_turn /&gt;</p>
+    <h2>Ready to test your JavaScript knowledge?</h2>
+    <p>Jump into the Practice Zone — it'll be filtered to JavaScript-only questions.</p>
+    <a class="startBtn" href="quiz.html?practice=javascript">Start Practicing JavaScript →</a>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

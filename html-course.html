@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Learn HTML — Frontend Forge</title>
+<meta name="description" content="A detailed, example-driven HTML course: structure, text, links, images, lists, tables, forms and semantic HTML5.">
+
+<!-- Mobile / PWA — lets the site be added to the home screen on
+     Android and iOS and gives it an app-like theme color / status bar. -->
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="course.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= COURSE HEADER ================= -->
+<section class="course-page-header">
+    <a class="back-link" href="courses.html">← Back to Courses</a>
+    <p class="eyebrow">&lt;course_01 /&gt;</p>
+    <h1>Learn <span class="ember-text">HTML</span></h1>
+    <p>HTML is the skeleton of every website — the tags that give your content structure and meaning. Work through the lessons below, then head to the Practice Zone to test what you've learned.</p>
+</section>
+
+<nav class="lesson-toc" aria-label="Lesson contents">
+    <a href="#l1">1. Structure</a>
+    <a href="#l2">2. Text &amp; Headings</a>
+    <a href="#l3">3. Links &amp; Images</a>
+    <a href="#l4">4. Lists &amp; Tables</a>
+    <a href="#l5">5. Forms</a>
+    <a href="#l6">6. Semantic HTML5</a>
+    <a href="#l7">7. Forms Deep Dive</a>
+    <a href="#l8">8. Attributes &amp; Meta</a>
+    <a href="#l9">9. Accessibility</a>
+    <a href="#l10">10. Tables Deep Dive</a>
+    <a href="#l11">11. iframes &amp; Embeds</a>
+    <a href="#l12">12. Canvas &amp; SVG</a>
+    <a href="#l13">13. Web Storage</a>
+    <a href="#l14">14. Responsive Images</a>
+    <a href="#l15">15. Web Components</a>
+</nav>
+
+<!-- ================= LESSONS ================= -->
+<article>
+
+<section class="lesson" id="l1">
+    <span class="lesson-index">Lesson 1</span>
+    <h2>Document Structure</h2>
+    <p>Every HTML page starts with the same skeleton: a <code>&lt;!DOCTYPE html&gt;</code> declaration, an <code>&lt;html&gt;</code> root element, a <code>&lt;head&gt;</code> for metadata the browser needs (but doesn't display), and a <code>&lt;body&gt;</code> that holds everything visitors actually see.</p>
+    <div class="lesson-example">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Hello, world!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+    <p>The <code>lang</code> attribute helps screen readers and translators, and <code>&lt;meta charset="UTF-8"&gt;</code> tells the browser how to decode the text on the page.</p>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tree diagram: html contains head and body; head contains title; body contains h1 and p">
+        <g style="stroke:var(--border);stroke-width:2">
+          <line x1="310" y1="52" x2="150" y2="110"/>
+          <line x1="310" y1="52" x2="470" y2="110"/>
+          <line x1="150" y1="152" x2="150" y2="195"/>
+          <line x1="470" y1="152" x2="385" y2="195"/>
+          <line x1="470" y1="152" x2="515" y2="195"/>
+        </g>
+        <rect x="250" y="10" width="120" height="42" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="310" y="36" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:14px;fill:var(--text)">&lt;html&gt;</text>
+        <rect x="90" y="110" width="120" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="150" y="136" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:14px;fill:var(--text)">&lt;head&gt;</text>
+        <rect x="410" y="110" width="120" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="470" y="136" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:14px;fill:var(--text)">&lt;body&gt;</text>
+        <rect x="90" y="195" width="120" height="38" rx="8" style="fill:var(--bg);stroke:var(--border)"/>
+        <text x="150" y="219" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12.5px;fill:var(--text-muted)">&lt;title&gt;</text>
+        <rect x="330" y="195" width="110" height="38" rx="8" style="fill:var(--bg);stroke:var(--border)"/>
+        <text x="385" y="219" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12.5px;fill:var(--text-muted)">&lt;h1&gt;</text>
+        <rect x="460" y="195" width="110" height="38" rx="8" style="fill:var(--bg);stroke:var(--border)"/>
+        <text x="515" y="219" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12.5px;fill:var(--text-muted)">&lt;p&gt;</text>
+      </svg>
+      <figcaption>Every tag nests inside another, forming a tree — the same tree JavaScript later walks through as the DOM.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l2">
+    <span class="lesson-index">Lesson 2</span>
+    <h2>Text &amp; Headings</h2>
+    <p>Headings (<code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>) create a hierarchy of importance, and <code>&lt;p&gt;</code> holds paragraphs of text. Inline tags like <code>&lt;strong&gt;</code> and <code>&lt;em&gt;</code> add meaning, not just style.</p>
+    <div class="lesson-example">&lt;h1&gt;Frontend Forge&lt;/h1&gt;
+&lt;h2&gt;Why Learn HTML?&lt;/h2&gt;
+&lt;p&gt;
+  HTML is &lt;strong&gt;essential&lt;/strong&gt; for every
+  website — it's the &lt;em&gt;first&lt;/em&gt; language
+  every web developer learns.
+&lt;/p&gt;</div>
+    <p>Only use one <code>&lt;h1&gt;</code> per page — it should describe what the whole page is about, with <code>&lt;h2&gt;</code>–<code>&lt;h6&gt;</code> nesting beneath it for sections and subsections.</p>
+</section>
+
+<section class="lesson" id="l3">
+    <span class="lesson-index">Lesson 3</span>
+    <h2>Links &amp; Images</h2>
+    <p>The anchor tag <code>&lt;a&gt;</code> creates a hyperlink using the <code>href</code> attribute. The <code>&lt;img&gt;</code> tag embeds an image and is self-closing — it always needs a <code>src</code> and, for accessibility, an <code>alt</code> description.</p>
+    <div class="lesson-example">&lt;a href="https://example.com" target="_blank"&gt;
+  Visit Example.com
+&lt;/a&gt;
+
+&lt;img src="forge-logo.png" alt="Frontend Forge logo"&gt;</div>
+    <p><code>target="_blank"</code> opens a link in a new tab. The <code>alt</code> text is read aloud by screen readers and shown if the image fails to load — never leave it empty on a meaningful image.</p>
+</section>
+
+<section class="lesson" id="l4">
+    <span class="lesson-index">Lesson 4</span>
+    <h2>Lists &amp; Tables</h2>
+    <p>Use <code>&lt;ul&gt;</code> for an unordered (bulleted) list or <code>&lt;ol&gt;</code> for an ordered (numbered) one, with each item wrapped in <code>&lt;li&gt;</code>. Tables use <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> for rows, and <code>&lt;td&gt;</code> for cells.</p>
+    <div class="lesson-example">&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Language&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;HTML&lt;/td&gt;&lt;td&gt;Structure&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+    <p><code>&lt;th&gt;</code> defines a header cell — browsers bold and center it by default, and it helps screen readers announce column meaning.</p>
+</section>
+
+<section class="lesson" id="l5">
+    <span class="lesson-index">Lesson 5</span>
+    <h2>Forms &amp; Inputs</h2>
+    <p>Forms collect user input. The <code>&lt;form&gt;</code> element wraps controls like <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;button&gt;</code>. Always pair an input with a <code>&lt;label&gt;</code> so it's clear what the field is for.</p>
+    <div class="lesson-example">&lt;form action="/submit" method="POST"&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email" required&gt;
+
+  &lt;button type="submit"&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;</div>
+    <p>Input <code>type</code> matters: <code>email</code>, <code>date</code>, and <code>number</code> all give mobile users a tailored keyboard, and <code>required</code> triggers built-in browser validation.</p>
+</section>
+
+<section class="lesson" id="l6">
+    <span class="lesson-index">Lesson 6</span>
+    <h2>Semantic HTML5 &amp; Media</h2>
+    <p>Semantic tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code> describe the role of content instead of just its layout — better for accessibility and SEO than a page built entirely from generic <code>&lt;div&gt;</code>s.</p>
+    <div class="lesson-example">&lt;header&gt;&lt;h1&gt;My Blog&lt;/h1&gt;&lt;/header&gt;
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Post Title&lt;/h2&gt;
+    &lt;p&gt;Post content goes here...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;&lt;p&gt;&amp;copy; 2026&lt;/p&gt;&lt;/footer&gt;
+
+&lt;video src="clip.mp4" controls&gt;&lt;/video&gt;</div>
+    <p>The <code>&lt;video&gt;</code> and <code>&lt;audio&gt;</code> tags embed media natively — no plugins needed — and the <code>controls</code> attribute adds a built-in play bar.</p>
+</section>
+
+<section class="lesson" id="l7">
+    <span class="lesson-index">Lesson 7</span>
+    <h2>Forms Deep Dive</h2>
+    <p>Beyond a text <code>&lt;input&gt;</code>, forms have controls purpose-built for different choices: <code>&lt;select&gt;</code> for a dropdown, radio buttons for picking exactly one option from a group, checkboxes for independent on/off toggles, and <code>&lt;textarea&gt;</code> for multi-line text.</p>
+    <div class="lesson-example">&lt;fieldset&gt;
+  &lt;legend&gt;Choose a plan&lt;/legend&gt;
+
+  &lt;label&gt;&lt;input type="radio" name="plan" value="free"&gt; Free&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="plan" value="pro" checked&gt; Pro&lt;/label&gt;
+
+  &lt;label&gt;&lt;input type="checkbox" name="updates"&gt; Email me updates&lt;/label&gt;
+
+  &lt;select name="role"&gt;
+    &lt;option value="dev"&gt;Developer&lt;/option&gt;
+    &lt;option value="designer"&gt;Designer&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;textarea rows="3" placeholder="Anything else?"&gt;&lt;/textarea&gt;
+&lt;/fieldset&gt;</div>
+    <p>Radio buttons sharing the same <code>name</code> act as a single group — selecting one clears the others — while checkboxes are always independent. <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> group related controls and give assistive tech a label for the whole group, not just one field.</p>
+</section>
+
+<section class="lesson" id="l8">
+    <span class="lesson-index">Lesson 8</span>
+    <h2>Attributes, Data Attributes &amp; Meta Tags</h2>
+    <p>Attributes add information to a tag without changing what's shown on the page. Alongside standard ones like <code>class</code> and <code>id</code>, a <code>data-*</code> attribute lets you attach custom information of your own that JavaScript can read back later.</p>
+    <div class="lesson-example">&lt;button data-course="css" data-difficulty="beginner"&gt;
+  Start CSS
+&lt;/button&gt;
+
+&lt;script&gt;
+  const btn = document.querySelector('button');
+  console.log(btn.dataset.course); // "css"
+&lt;/script&gt;</div>
+    <p>Every <code>data-*</code> attribute is automatically readable through an element's <code>dataset</code> property — <code>data-course</code> becomes <code>dataset.course</code>. This is exactly how Frontend Forge itself remembers which course card you clicked. <code>&lt;meta&gt;</code> tags work similarly for the whole page: a <code>description</code> meta tag summarizes it for search engines, and <code>&lt;link rel="icon"&gt;</code> sets the little tab favicon.</p>
+</section>
+
+<section class="lesson" id="l9">
+    <span class="lesson-index">Lesson 9</span>
+    <h2>Accessibility Basics</h2>
+    <p>Accessible HTML means anyone — including someone using a screen reader or navigating by keyboard only — can understand and use your page. Most of it comes down to giving elements the right names and roles.</p>
+    <div class="lesson-example">&lt;button aria-label="Close menu"&gt;✕&lt;/button&gt;
+
+&lt;nav aria-label="Main"&gt;
+  ...
+&lt;/nav&gt;
+
+&lt;img src="chart.png" alt=""&gt;
+&lt;!-- empty alt = purely decorative, screen readers skip it --&gt;
+
+&lt;span aria-hidden="true"&gt;🔥&lt;/span&gt; Dedicated Learner</div>
+    <p><code>aria-label</code> gives assistive tech a name for a control when there's no visible text, like an icon-only close button. An empty <code>alt=""</code> marks an image as decorative so screen readers skip it, and <code>aria-hidden="true"</code> does the same for any element — it's why the drifting embers behind this page and the badge icons are marked hidden, so they don't get read aloud as noise.</p>
+</section>
+
+<section class="lesson" id="l10">
+    <span class="lesson-index">Lesson 10</span>
+    <h2>Tables Deep Dive</h2>
+    <p>A real table is more than rows of <code>&lt;td&gt;</code>. <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, and <code>&lt;tfoot&gt;</code> group a table into a header, body, and footer, which browsers can style and scroll independently. <code>colspan</code> and <code>rowspan</code> let a single cell stretch across multiple columns or rows.</p>
+    <div class="lesson-example">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Course&lt;/th&gt;&lt;th&gt;Lessons&lt;/th&gt;&lt;th&gt;Level&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td colspan="2"&gt;HTML &amp; CSS Basics&lt;/td&gt;
+      &lt;td&gt;Beginner&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;JavaScript&lt;/td&gt;&lt;td&gt;12&lt;/td&gt;&lt;td&gt;Intermediate&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a table grid: a highlighted thead row of three header cells, then a tbody row where the first two columns are merged with colspan, then a normal tbody row">
+        <text x="0" y="30" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--ember)">thead</text>
+        <rect x="70" y="10" width="140" height="42" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <rect x="210" y="10" width="140" height="42" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <rect x="350" y="10" width="140" height="42" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="140" y="36" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text)">Course</text>
+        <text x="280" y="36" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text)">Lessons</text>
+        <text x="420" y="36" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text)">Level</text>
+
+        <text x="0" y="86" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text-dim)">tbody</text>
+        <rect x="70" y="60" width="280" height="42" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <rect x="350" y="60" width="140" height="42" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="210" y="86" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text-muted)">colspan="2"</text>
+        <text x="420" y="86" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text-muted)">Beginner</text>
+
+        <rect x="70" y="110" width="140" height="42" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <rect x="210" y="110" width="140" height="42" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <rect x="350" y="110" width="140" height="42" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="140" y="136" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text-muted)">JavaScript</text>
+        <text x="280" y="136" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text-muted)">12</text>
+        <text x="420" y="136" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text-muted)">Intermediate</text>
+      </svg>
+      <figcaption>colspan="2" merges the first two columns of that row into one cell — the third column continues normally.</figcaption>
+    </figure>
+
+    <p><code>&lt;th scope="col"&gt;</code> also tells screen readers which column or row a header describes — add <code>scope="col"</code> or <code>scope="row"</code> for anything more complex than a simple grid.</p>
+</section>
+
+<section class="lesson" id="l11">
+    <span class="lesson-index">Lesson 11</span>
+    <h2>iframes &amp; Embedded Content</h2>
+    <p>An <code>&lt;iframe&gt;</code> embeds another entire HTML document inside the current page — a map, a video, a payment widget. It behaves like a little browser window nested in yours, with its own scripts and styles that can't reach the parent page directly.</p>
+    <div class="lesson-example">&lt;iframe
+  src="https://example.com/widget"
+  title="Embedded pricing widget"
+  width="100%"
+  height="400"
+  loading="lazy"&gt;
+&lt;/iframe&gt;</div>
+    <p>Always give an iframe a <code>title</code> — screen readers announce it so users know what the embedded frame is for. <code>loading="lazy"</code> defers loading the frame until it's about to scroll into view, which keeps the initial page load fast.</p>
+</section>
+
+<section class="lesson" id="l12">
+    <span class="lesson-index">Lesson 12</span>
+    <h2>HTML5 Canvas &amp; SVG</h2>
+    <p>HTML has two built-in ways to draw graphics without an image file. <code>&lt;canvas&gt;</code> is a blank pixel surface you draw on with JavaScript — great for games, charts, and effects like this site's drifting-ember background. <code>&lt;svg&gt;</code> describes shapes declaratively as markup, so they stay crisp at any zoom level and can be styled with CSS.</p>
+    <div class="lesson-example">&lt;svg viewBox="0 0 100 100" width="100" height="100"&gt;
+  &lt;circle cx="50" cy="50" r="40" fill="#ff6b35"/&gt;
+  &lt;rect x="20" y="20" width="24" height="24" fill="#ffb627"/&gt;
+&lt;/svg&gt;</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rendered output of the SVG example: an orange circle with a smaller yellow square overlapping its top-left">
+        <circle cx="100" cy="60" r="46" style="fill:var(--ember)"/>
+        <rect x="58" y="18" width="30" height="30" style="fill:var(--ember-hot)"/>
+      </svg>
+      <figcaption>What the SVG code above actually renders — every shape is a real, inspectable element, not a flattened picture.</figcaption>
+    </figure>
+
+    <p>Rule of thumb: reach for <strong>SVG</strong> for icons, logos, and diagrams (like the ones throughout this course) where crispness and CSS styling matter; reach for <strong>canvas</strong> when you need to redraw thousands of pixels quickly, like an animation or a game loop.</p>
+</section>
+
+<section class="lesson" id="l13">
+    <span class="lesson-index">Lesson 13</span>
+    <h2>Web Storage: localStorage &amp; sessionStorage</h2>
+    <p>The browser can hold onto small pieces of data between visits without a server at all. <code>localStorage</code> persists until it's explicitly cleared; <code>sessionStorage</code> disappears the moment the tab closes. Both only store strings, so objects need <code>JSON.stringify</code>/<code>JSON.parse</code> to round-trip.</p>
+    <div class="lesson-example">&lt;script&gt;
+  localStorage.setItem('forge_theme', 'dark');
+  const theme = localStorage.getItem('forge_theme');
+
+  const progress = { html: true, css: false };
+  localStorage.setItem('progress', JSON.stringify(progress));
+  const restored = JSON.parse(localStorage.getItem('progress'));
+&lt;/script&gt;</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 560 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram comparing localStorage and sessionStorage lifetimes">
+        <rect x="20" y="20" width="240" height="120" rx="10" style="fill:var(--surface-2);stroke:var(--ember)"/>
+        <text x="140" y="48" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--ember)">localStorage</text>
+        <text x="140" y="76" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11.5px;fill:var(--text-muted)">Survives closing the tab,</text>
+        <text x="140" y="94" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11.5px;fill:var(--text-muted)">the browser, even a reboot.</text>
+        <text x="140" y="118" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text)">Cleared only by code or the user.</text>
+
+        <rect x="300" y="20" width="240" height="120" rx="10" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="420" y="48" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text)">sessionStorage</text>
+        <text x="420" y="76" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11.5px;fill:var(--text-muted)">Lives only for one tab's</text>
+        <text x="420" y="94" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11.5px;fill:var(--text-muted)">session — gone on tab close.</text>
+        <text x="420" y="118" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text)">Good for one-time form drafts.</text>
+      </svg>
+      <figcaption>Frontend Forge itself uses localStorage for your theme, quiz scores, badges and certificates.</figcaption>
+    </figure>
+    <p>Both APIs are synchronous and roughly 5–10MB per origin — fine for settings and progress, but not for large files. For anything bigger or shared across devices, that data needs to live on a server instead.</p>
+</section>
+
+<section class="lesson" id="l14">
+    <span class="lesson-index">Lesson 14</span>
+    <h2>Responsive Images</h2>
+    <p>A single <code>&lt;img&gt;</code> forces every visitor to download the same file, whether they're on a phone or a 4K monitor. <code>srcset</code> and <code>sizes</code> let the browser pick the best-fitting image itself, and <code>&lt;picture&gt;</code> can swap the format or crop entirely at different breakpoints.</p>
+    <div class="lesson-example">&lt;img
+  src="hero-800.jpg"
+  srcset="hero-400.jpg 400w, hero-800.jpg 800w, hero-1600.jpg 1600w"
+  sizes="(max-width: 600px) 100vw, 50vw"
+  alt="Forge workshop banner"&gt;
+
+&lt;picture&gt;
+  &lt;source srcset="hero.avif" type="image/avif"&gt;
+  &lt;source srcset="hero.webp" type="image/webp"&gt;
+  &lt;img src="hero.jpg" alt="Forge workshop banner"&gt;
+&lt;/picture&gt;</div>
+    <p>The browser reads each candidate's width (<code>400w</code>) alongside <code>sizes</code> to work out how many CSS pixels the image will actually occupy, then downloads only the smallest file that's still sharp enough — saving bandwidth on mobile without any JavaScript.</p>
+</section>
+
+<section class="lesson" id="l15">
+    <span class="lesson-index">Lesson 15</span>
+    <h2>Templates &amp; Web Components</h2>
+    <p>The <code>&lt;template&gt;</code> tag holds markup that the browser parses but never renders or runs — it's inert until JavaScript clones it into the page. Combined with <strong>custom elements</strong>, this is the foundation of native Web Components, framework-free reusable widgets.</p>
+    <div class="lesson-example">&lt;template id="badge-template"&gt;
+  &lt;div class="badge"&gt;
+    &lt;span class="badge-icon"&gt;&lt;/span&gt;
+    &lt;span class="badge-name"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  const tpl = document.getElementById('badge-template');
+  const clone = tpl.content.cloneNode(true);
+  clone.querySelector('.badge-name').textContent = 'Dedicated Learner';
+  document.body.appendChild(clone);
+&lt;/script&gt;</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 560 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: template content is inert, then cloneNode copies it into the live document">
+        <rect x="20" y="30" width="200" height="70" rx="8" style="fill:var(--bg);stroke:var(--border);stroke-dasharray:5,4"/>
+        <text x="120" y="60" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text-muted)">&lt;template&gt;</text>
+        <text x="120" y="80" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text-muted)">inert, not rendered</text>
+        <line x1="230" y1="65" x2="320" y2="65" style="stroke:var(--ember);stroke-width:2" marker-end="url(#arrow)"/>
+        <text x="275" y="55" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--ember)">clone</text>
+        <rect x="330" y="30" width="200" height="70" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="430" y="60" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">live &lt;div class="badge"&gt;</text>
+        <text x="430" y="80" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text)">rendered on the page</text>
+        <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--ember)"/></marker></defs>
+      </svg>
+      <figcaption>The badge cards on the Progress section of this site are built exactly this way.</figcaption>
+    </figure>
+    <p>A custom element like <code>&lt;forge-badge&gt;</code> can wrap this pattern into its own tag using <code>customElements.define()</code>, giving you a reusable component with no build tools or frameworks required.</p>
+</section>
+
+</article>
+
+<!-- ================= PRACTICE CTA ================= -->
+<section class="practice-cta">
+    <p class="eyebrow center">&lt;your_turn /&gt;</p>
+    <h2>Ready to test your HTML knowledge?</h2>
+    <p>Jump into the Practice Zone — it'll be filtered to HTML-only questions.</p>
+    <a class="startBtn" href="quiz.html?practice=html">Start Practicing HTML →</a>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

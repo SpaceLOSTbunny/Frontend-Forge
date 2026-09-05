@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Learn CSS — Frontend Forge</title>
+<meta name="description" content="A detailed, example-driven CSS course: selectors, the box model, typography, Flexbox, Grid, and responsive design.">
+
+<!-- Mobile / PWA — lets the site be added to the home screen on
+     Android and iOS and gives it an app-like theme color / status bar. -->
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="course.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= COURSE HEADER ================= -->
+<section class="course-page-header">
+    <a class="back-link" href="courses.html">← Back to Courses</a>
+    <p class="eyebrow">&lt;course_02 /&gt;</p>
+    <h1>Learn <span class="ember-text">CSS</span></h1>
+    <p>CSS is what turns plain HTML into something people actually want to look at — color, spacing, layout and motion. Work through the lessons below, then head to the Practice Zone to test what you've learned.</p>
+</section>
+
+<nav class="lesson-toc" aria-label="Lesson contents">
+    <a href="#l1">1. Selectors</a>
+    <a href="#l2">2. Box Model</a>
+    <a href="#l3">3. Color &amp; Units</a>
+    <a href="#l4">4. Flexbox</a>
+    <a href="#l5">5. Grid</a>
+    <a href="#l6">6. Responsive Design</a>
+    <a href="#l7">7. Pseudo-classes</a>
+    <a href="#l8">8. Positioning</a>
+    <a href="#l9">9. Animations</a>
+    <a href="#l10">10. Specificity</a>
+    <a href="#l11">11. Custom Properties</a>
+    <a href="#l12">12. Gradients &amp; Shadows</a>
+    <a href="#l13">13. Transforms &amp; 3D</a>
+    <a href="#l14">14. calc(), clamp() &amp; min/max</a>
+    <a href="#l15">15. Grid Template Areas</a>
+</nav>
+
+<!-- ================= LESSONS ================= -->
+<article>
+
+<section class="lesson" id="l1">
+    <span class="lesson-index">Lesson 1</span>
+    <h2>Selectors</h2>
+    <p>CSS rules pair a <strong>selector</strong> with a set of declarations. An element selector targets a tag, a class selector (<code>.name</code>) targets any element with that class, and an ID selector (<code>#name</code>) targets exactly one element.</p>
+    <div class="lesson-example">p { color: #444; }
+
+.card { padding: 20px; }
+
+#main-header { font-weight: 700; }</div>
+    <p>Classes are reusable and reach for them by default — reserve IDs for one-off, unique elements like a page's main header.</p>
+</section>
+
+<section class="lesson" id="l2">
+    <span class="lesson-index">Lesson 2</span>
+    <h2>The Box Model</h2>
+    <p>Every element is a rectangular box made of four layers, from the inside out: <strong>content</strong>, <strong>padding</strong>, <strong>border</strong>, and <strong>margin</strong>. Understanding this stack is the key to controlling spacing.</p>
+    <div class="lesson-example">.card {
+  padding: 20px;       /* space inside the border */
+  border: 1px solid #ddd;
+  margin: 16px 0;       /* space outside the border */
+  box-sizing: border-box; /* padding/border don't add to width */
+}</div>
+    <p><code>box-sizing: border-box</code> is a near-universal default in modern CSS — it makes an element's declared <code>width</code> include its padding and border, so sizing stays predictable.</p>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Box model diagram: nested rectangles for margin, border, padding, and content, from outside in">
+        <rect x="10" y="10" width="460" height="280" rx="6" style="fill:none;stroke:var(--text-dim);stroke-width:1.5;stroke-dasharray:5 5"/>
+        <text x="20" y="30" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text-dim)">margin</text>
+
+        <rect x="45" y="45" width="390" height="215" rx="6" style="fill:var(--surface-2);stroke:var(--ember-dim);stroke-width:1.5"/>
+        <text x="55" y="65" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--ember-dim)">border</text>
+
+        <rect x="80" y="80" width="320" height="150" rx="4" style="fill:var(--surface);stroke:var(--border);stroke-width:1.5"/>
+        <text x="90" y="100" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text-muted)">padding</text>
+
+        <rect x="115" y="115" width="250" height="90" rx="4" style="fill:var(--ember);fill-opacity:0.25;stroke:var(--ember)"/>
+        <text x="240" y="165" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:13px;fill:var(--text)">content</text>
+      </svg>
+      <figcaption>Four layers, outside in: margin (space outside), border, padding (space inside), then the content box itself.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l3">
+    <span class="lesson-index">Lesson 3</span>
+    <h2>Color, Typography &amp; Units</h2>
+    <p>Colors can be named, hex, or <code>rgb()</code>. Sizing units matter too: <code>px</code> is fixed, <code>%</code> is relative to the parent, <code>em</code> is relative to the current font size, and <code>rem</code> is relative to the root font size — usually the safest choice.</p>
+    <div class="lesson-example">body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #222;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgb(255, 107, 53);
+}</div>
+    <p>Prefer <code>rem</code> for font sizes and spacing — it scales consistently if a user changes their browser's base font size for accessibility.</p>
+</section>
+
+<section class="lesson" id="l4">
+    <span class="lesson-index">Lesson 4</span>
+    <h2>Flexbox</h2>
+    <p>Flexbox lays out items in a single row or column. Set <code>display: flex</code> on a container, then use <code>justify-content</code> to align items along the main axis and <code>align-items</code> to align them along the cross axis.</p>
+    <div class="lesson-example">.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}</div>
+    <p>Flexbox shines for one-dimensional layouts — navbars, button groups, and centering content both horizontally and vertically with almost no code.</p>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 500 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a flex container with three items spaced apart, showing the horizontal main axis and vertical cross axis">
+        <rect x="10" y="30" width="480" height="110" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <rect x="30" y="55" width="90" height="60" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <rect x="205" y="55" width="90" height="60" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <rect x="380" y="55" width="90" height="60" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="75" y="90" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">item 1</text>
+        <text x="250" y="90" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">item 2</text>
+        <text x="425" y="90" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">item 3</text>
+
+        <line x1="20" y1="15" x2="480" y2="15" style="stroke:var(--ember-hot);stroke-width:1.5" marker-end="url(#arrowH)"/>
+        <text x="250" y="10" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--ember-hot)">main axis — justify-content</text>
+
+        <line x1="490" y1="35" x2="490" y2="135" style="stroke:var(--text-dim);stroke-width:1.5" marker-end="url(#arrowV)"/>
+        <defs>
+          <marker id="arrowH" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" style="fill:var(--ember-hot)"/></marker>
+          <marker id="arrowV" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,0 L6,0 L3,6 Z" style="fill:var(--text-dim)"/></marker>
+        </defs>
+        <text x="497" y="90" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text-dim)" transform="rotate(90 497 90)">cross axis</text>
+      </svg>
+      <figcaption><code>justify-content: space-between</code> spreads items along the main axis; <code>align-items</code> positions them along the cross axis.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l5">
+    <span class="lesson-index">Lesson 5</span>
+    <h2>Grid</h2>
+    <p>CSS Grid handles two-dimensional layouts — rows <em>and</em> columns at once. Define a track structure with <code>grid-template-columns</code>, then let items fall into place, or position them explicitly.</p>
+    <div class="lesson-example">.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}</div>
+    <p><code>repeat(3, 1fr)</code> creates three equal-width columns. Grid is the natural choice for page layouts, image galleries, and dashboards.</p>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a 3 by 2 CSS grid, with column tracks labeled 1fr each and a 20px gap between cells">
+        <text x="55" y="18" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--ember-hot)">1fr</text>
+        <text x="205" y="18" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--ember-hot)">1fr</text>
+        <text x="355" y="18" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--ember-hot)">1fr</text>
+        <g style="fill:var(--surface-2);stroke:var(--ember-dim)">
+          <rect x="10" y="26" width="130" height="80" rx="6"/>
+          <rect x="160" y="26" width="130" height="80" rx="6"/>
+          <rect x="310" y="26" width="130" height="80" rx="6"/>
+          <rect x="10" y="126" width="130" height="80" rx="6"/>
+          <rect x="160" y="126" width="130" height="80" rx="6"/>
+          <rect x="310" y="126" width="130" height="80" rx="6"/>
+        </g>
+        <text x="75" y="70" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">1 / 1</text>
+        <text x="225" y="70" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">1 / 2</text>
+        <text x="375" y="70" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">1 / 3</text>
+        <text x="75" y="170" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">2 / 1</text>
+        <text x="225" y="170" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">2 / 2</text>
+        <text x="375" y="170" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">2 / 3</text>
+      </svg>
+      <figcaption>Three equal fractional-unit columns and two rows — the 20px <code>gap</code> becomes the space between tracks.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l6">
+    <span class="lesson-index">Lesson 6</span>
+    <h2>Responsive Design &amp; Transitions</h2>
+    <p>Media queries apply CSS conditionally based on viewport size, letting one stylesheet adapt to phones, tablets, and desktops. Transitions smooth out property changes, like a hover effect, instead of snapping instantly.</p>
+    <div class="lesson-example">.card {
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 600px) {
+  .gallery { grid-template-columns: 1fr; }
+}</div>
+    <p>Design "mobile-first": write your base styles for small screens, then use <code>min-width</code> media queries to add complexity as the viewport grows.</p>
+</section>
+
+<section class="lesson" id="l7">
+    <span class="lesson-index">Lesson 7</span>
+    <h2>Pseudo-classes &amp; Pseudo-elements</h2>
+    <p>A pseudo-class selects an element based on its state or position, without needing an extra class in the HTML — <code>:hover</code>, <code>:focus</code>, and <code>:nth-child()</code> are the ones you'll reach for constantly. A pseudo-element like <code>::before</code> or <code>::after</code> generates content that isn't in the HTML at all.</p>
+    <div class="lesson-example">.nav-link:hover { color: #fff; }
+
+.lesson:nth-child(odd) { background: #1e1a15; }
+
+.badge::before {
+  content: "★";
+  margin-right: 6px;
+}</div>
+    <p><code>:nth-child(odd)</code> is handy for zebra-striping rows in a list without touching the markup. <code>::before</code>/<code>::after</code> always need a <code>content</code> property — even an empty string — or the browser won't render them; they're perfect for decorative icons, quote marks, or little corner labels.</p>
+</section>
+
+<section class="lesson" id="l8">
+    <span class="lesson-index">Lesson 8</span>
+    <h2>Positioning</h2>
+    <p>The <code>position</code> property controls how an element is placed. <code>static</code> is the default flow; <code>relative</code> nudges an element from its normal spot while still reserving that space; <code>absolute</code> removes it from the flow and places it against its nearest positioned ancestor; <code>fixed</code> pins it to the browser window; <code>sticky</code> behaves like <code>relative</code> until a scroll threshold, then sticks like <code>fixed</code>.</p>
+    <div class="lesson-example">.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}</div>
+    <p><code>fixed</code> is exactly how the little arrow button in the corner of this page stays put in the same spot no matter how far you scroll — and <code>sticky</code> is what keeps the header glued to the top of the viewport as you read. <code>z-index</code> only has an effect on positioned elements (anything other than <code>static</code>), and it decides which one sits on top when two overlap.</p>
+</section>
+
+<section class="lesson" id="l9">
+    <span class="lesson-index">Lesson 9</span>
+    <h2>Animations &amp; Keyframes</h2>
+    <p>A transition animates between two states in response to a change, like a <code>:hover</code>. A <code>@keyframes</code> animation is more powerful — it can run automatically on page load, move through as many steps as you define, and loop forever without any trigger at all.</p>
+    <div class="lesson-example">@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.icon {
+  animation: float 3s ease-in-out infinite;
+}</div>
+    <p>Name the animation, define what happens at each percentage of its timeline, then attach it with the <code>animation</code> shorthand: duration, easing, and <code>infinite</code> to loop. It's how the drifting embers and the gently swinging logo mark on this page stay in motion without any JavaScript driving the movement itself.</p>
+</section>
+
+<section class="lesson" id="l10">
+    <span class="lesson-index">Lesson 10</span>
+    <h2>Specificity</h2>
+    <p>When two rules target the same element, the browser doesn't just use whichever comes last — it weighs each selector's <strong>specificity</strong> first. Inline styles win over everything; an ID beats any number of classes; a class, attribute, or pseudo-class beats any number of elements; a bare element or pseudo-element selector is the weakest.</p>
+    <div class="lesson-example">p                 { color: blue; }    /* element: weight 0-0-1 */
+.warning          { color: orange; }  /* class: weight 0-1-0 */
+#alert-banner     { color: red; }     /* ID: weight 1-0-0 */
+&lt;p style="color: green"&gt;...&lt;/p&gt;      /* inline: always wins */
+
+/* #alert-banner beats .warning, which beats p, no matter the order */</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bar graph comparing the relative weight of inline styles, ID selectors, class selectors, and element selectors, from tallest to shortest">
+        <line x1="40" y1="190" x2="440" y2="190" style="stroke:var(--border);stroke-width:1.5"/>
+        <g>
+          <rect x="60" y="40" width="70" height="150" style="fill:var(--ember)"/>
+          <text x="95" y="30" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text)">1,0,0,0</text>
+          <text x="95" y="208" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text-muted)">inline</text>
+        </g>
+        <g>
+          <rect x="170" y="75" width="70" height="115" style="fill:var(--ember-hot)"/>
+          <text x="205" y="65" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text)">0,1,0,0</text>
+          <text x="205" y="208" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text-muted)">ID</text>
+        </g>
+        <g>
+          <rect x="280" y="120" width="70" height="70" style="fill:var(--ember-dim)"/>
+          <text x="315" y="110" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text)">0,0,1,0</text>
+          <text x="315" y="208" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text-muted)">class / attr</text>
+        </g>
+        <g>
+          <rect x="390" y="155" width="50" height="35" style="fill:var(--surface-2);stroke:var(--border)"/>
+          <text x="415" y="145" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text)">0,0,0,1</text>
+          <text x="415" y="208" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text-muted)">element</text>
+        </g>
+      </svg>
+      <figcaption>Bar heights are schematic, not to scale — the real rule is categorical: any ID beats any number of classes, full stop.</figcaption>
+    </figure>
+
+    <p>Rather than reaching for <code>!important</code> to force a win, keep selectors as flat and class-based as possible — it's the easiest specificity level to reason about and override later.</p>
+</section>
+
+<section class="lesson" id="l11">
+    <span class="lesson-index">Lesson 11</span>
+    <h2>Custom Properties (CSS Variables)</h2>
+    <p>A custom property stores a reusable value — a color, a spacing unit, a font — under a name starting with two dashes. Defined on <code>:root</code>, it's available everywhere and read with <code>var()</code>, with an optional fallback if it's ever missing.</p>
+    <div class="lesson-example">:root {
+  --ember: #ff6b35;
+  --radius: 12px;
+  --gap: 16px;
+}
+
+.card {
+  border-radius: var(--radius);
+  gap: var(--gap, 12px); /* 12px fallback if --gap isn't set */
+  border: 1px solid var(--ember);
+}</div>
+    <p>Unlike a Sass variable, a custom property is live in the browser — Frontend Forge's own light/dark theme toggle works by redefining <code>--bg</code>, <code>--text</code>, and friends on <code>[data-theme="light"]</code>, and every rule using <code>var(--bg)</code> updates instantly with no rebuild step.</p>
+</section>
+
+<section class="lesson" id="l12">
+    <span class="lesson-index">Lesson 12</span>
+    <h2>Gradients, Shadows &amp; Filters</h2>
+    <p><code>linear-gradient()</code> and <code>radial-gradient()</code> blend two or more colors without an image file. <code>box-shadow</code> drops a shadow behind an element's box, while <code>filter</code> applies effects — blur, brightness, grayscale — to everything drawn inside it, pixels included.</p>
+    <div class="lesson-example">.hero-banner {
+  background: linear-gradient(100deg, #ff6b35 0%, #ffb627 100%);
+  box-shadow: 0 24px 48px -20px rgba(0,0,0,0.5);
+}
+
+.card:hover {
+  filter: brightness(1.1);
+}</div>
+    <p>This exact gradient technique is how the glowing "Frontend Forge" title text on the homepage gets its ember-to-gold color shift — a gradient background clipped to the text shape with <code>background-clip: text</code>.</p>
+</section>
+
+<section class="lesson" id="l13">
+    <span class="lesson-index">Lesson 13</span>
+    <h2>Transforms &amp; 3D</h2>
+    <p><code>transform</code> moves, rotates, scales, and skews an element without disturbing the rest of the page's layout — unlike changing <code>top</code>/<code>left</code>, it doesn't trigger a reflow, so it's the cheapest property to animate. Chain multiple functions in one declaration and they apply left to right.</p>
+    <div class="lesson-example">.course-card:hover {
+  transform: translateY(-8px) scale(1.02) rotate(-0.5deg);
+  transition: transform 0.25s ease;
+}
+
+.badge-icon {
+  transform: perspective(400px) rotateY(15deg);
+}</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 560 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of translate, scale and rotate transforms applied to a box">
+        <rect x="30" y="50" width="70" height="50" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="65" y="115" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:10.5px;fill:var(--text-muted)">original</text>
+        <line x1="115" y1="75" x2="155" y2="75" style="stroke:var(--border);stroke-width:2" marker-end="url(#a2)"/>
+        <rect x="165" y="35" width="70" height="50" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="200" y="105" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:10.5px;fill:var(--text-muted)">translateY(-15)</text>
+        <line x1="250" y1="60" x2="290" y2="60" style="stroke:var(--border);stroke-width:2" marker-end="url(#a2)"/>
+        <rect x="300" y="25" width="90" height="65" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="345" y="105" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:10.5px;fill:var(--text-muted)">scale(1.25)</text>
+        <line x1="405" y1="57" x2="445" y2="57" style="stroke:var(--border);stroke-width:2" marker-end="url(#a2)"/>
+        <g transform="rotate(-8 500 60)">
+          <rect x="460" y="35" width="80" height="50" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        </g>
+        <text x="500" y="115" text-anchor="middle" style="font-family:'Inter',sans-serif;font-size:10.5px;fill:var(--text-muted)">rotate(-8deg)</text>
+        <defs><marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--border)"/></marker></defs>
+      </svg>
+      <figcaption>Each transform stacks on the box's own coordinate system — rotating happens around its own center by default.</figcaption>
+    </figure>
+    <p>Set <code>transform-origin</code> to change the pivot point for scale/rotate, and reach for <code>will-change: transform</code> only when an animation is actually janky — overusing it wastes GPU memory.</p>
+</section>
+
+<section class="lesson" id="l14">
+    <span class="lesson-index">Lesson 14</span>
+    <h2>calc(), clamp() &amp; Modern CSS Functions</h2>
+    <p><code>calc()</code> mixes units in one expression — like a sidebar that's the viewport minus a fixed header. <code>clamp(min, preferred, max)</code> goes further: it picks a fluid value that scales with the viewport but never goes below or above the bounds you set, which is often enough to replace a whole set of media queries for font sizing.</p>
+    <div class="lesson-example">.sidebar {
+  width: calc(100% - 240px);
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw + 1rem, 3.5rem);
+}
+
+.container {
+  width: min(90%, 1100px);
+  padding: max(16px, 4vw);
+}</div>
+    <p><code>clamp()</code> reads as "grow with <code>4vw + 1rem</code>, but never shrink past <code>1.75rem</code> or exceed <code>3.5rem</code>" — one line replacing three breakpoints of font-size overrides. <code>min()</code> and <code>max()</code> work the same way for widths and spacing.</p>
+</section>
+
+<section class="lesson" id="l15">
+    <span class="lesson-index">Lesson 15</span>
+    <h2>Grid Template Areas</h2>
+    <p>Naming regions of a grid with <code>grid-template-areas</code> turns a layout into readable ASCII art — each string is a row, each word a named cell, and repeating a name merges cells into one region. Child elements then just declare which named area they belong to.</p>
+    <div class="lesson-example">.page {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+.site-header { grid-area: header; }
+.sidebar     { grid-area: sidebar; }
+.main        { grid-area: main; }
+.site-footer { grid-area: footer; }</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grid layout diagram showing header spanning the top, sidebar and main side by side, and footer spanning the bottom">
+        <rect x="20" y="20" width="420" height="45" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="230" y="47" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">header</text>
+        <rect x="20" y="75" width="120" height="90" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="80" y="123" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text-muted)">sidebar</text>
+        <rect x="150" y="75" width="290" height="90" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="295" y="123" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text-muted)">main</text>
+        <rect x="20" y="175" width="420" height="35" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="230" y="197" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:12px;fill:var(--text)">footer</text>
+      </svg>
+      <figcaption>The strings in grid-template-areas literally draw the layout — this diagram is the CSS above, rendered.</figcaption>
+    </figure>
+    <p>Leave a cell out of the layout entirely with a <code>.</code> placeholder, and reorder the whole page for mobile just by rewriting the area strings inside a media query — no need to touch the HTML source order.</p>
+</section>
+
+</article>
+
+<!-- ================= PRACTICE CTA ================= -->
+<section class="practice-cta">
+    <p class="eyebrow center">&lt;your_turn /&gt;</p>
+    <h2>Ready to test your CSS knowledge?</h2>
+    <p>Jump into the Practice Zone — it'll be filtered to CSS-only questions.</p>
+    <a class="startBtn" href="quiz.html?practice=css">Start Practicing CSS →</a>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

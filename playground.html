@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Playground — Frontend Forge</title>
+<meta name="description" content="Write HTML, CSS, JavaScript, Python, Java or C++ and see live output instantly.">
+
+<!-- Mobile / PWA — lets the site be added to the home screen on
+     Android and iOS and gives it an app-like theme color / status bar. -->
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= PLAYGROUND ================= -->
+<section id="playground">
+    <p class="eyebrow center">&lt;live_preview /&gt;</p>
+    <h2>Frontend Playground</h2>
+    <p class="section-sub">Write code and see live output instantly — or load one of the examples below to see what's possible.</p>
+
+    <button class="startBtn" id="openPlaygroundBtn">Open Playground</button>
+
+    <div class="playground-editor hidden" id="playgroundEditor">
+        <div class="editor-tabs">
+            <div class="lang-mode-group" role="group" aria-label="Playground language">
+                <button class="tab-btn mode-btn active" data-mode="web" title="HTML, CSS &amp; JS live preview">🌐 Web</button>
+                <button class="tab-btn mode-btn" data-mode="python" title="Runs via a public code-execution API">🐍 Python</button>
+                <button class="tab-btn mode-btn" data-mode="java" title="Runs via a public code-execution API">☕ Java</button>
+                <button class="tab-btn mode-btn" data-mode="cpp" title="Runs via a public code-execution API">⚙️ C++</button>
+            </div>
+            <div class="sub-tabs" id="webSubTabs">
+                <button class="tab-btn active" data-tab="html">HTML</button>
+                <button class="tab-btn" data-tab="css">CSS</button>
+                <button class="tab-btn" data-tab="js">JS</button>
+            </div>
+            <span class="editor-tabs-spacer"></span>
+            <select id="exampleSelect" class="example-select" aria-label="Load an example">
+                <option value="starter">Starter</option>
+                <option value="colorGenerator">Color Generator</option>
+                <option value="todoList">To-Do List</option>
+                <option value="flipCard">Flip Card</option>
+                <option value="countdownTimer">Countdown Timer</option>
+            </select>
+            <button class="resetBtn" id="resetCodeBtn" title="Reset to default code">↺ Reset</button>
+            <button class="runBtn" id="runCodeBtn" title="Run (Ctrl / Cmd + Enter)">▶ Run</button>
+        </div>
+
+        <div class="editor-panes" id="editorPanes">
+            <textarea id="editHtml" class="editor-pane active" spellcheck="false">&lt;h1&gt;Hello, Forge!&lt;/h1&gt;
+&lt;p&gt;Edit the HTML, CSS and JS tabs, then hit Run.&lt;/p&gt;
+&lt;button id="demoBtn"&gt;Click me&lt;/button&gt;</textarea>
+            <textarea id="editCss" class="editor-pane" spellcheck="false">body {
+  font-family: sans-serif;
+  color: #ff6b35;
+  padding: 1rem;
+}
+
+button {
+  cursor: pointer;
+}</textarea>
+            <textarea id="editJs" class="editor-pane" spellcheck="false">console.log('Playground ready');
+
+document.getElementById('demoBtn').addEventListener('click', () => {
+  console.log('Button clicked!');
+});</textarea>
+            <textarea id="editPython" class="editor-pane" spellcheck="false">print("Hello, Forge!")
+
+for i in range(3):
+    print("Counting:", i)</textarea>
+            <textarea id="editJava" class="editor-pane" spellcheck="false">class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, Forge!");
+    }
+}
+</textarea>
+            <textarea id="editCpp" class="editor-pane" spellcheck="false">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, Forge!" &lt;&lt; endl;
+    return 0;
+}</textarea>
+        </div>
+
+        <iframe id="previewFrame" class="preview-frame" title="Live code preview" sandbox="allow-scripts"></iframe>
+
+        <div class="console-panel">
+            <div class="console-panel-header">
+                <span id="consolePanelLabel">Console</span>
+            </div>
+            <div class="console-output" id="playgroundConsole"></div>
+        </div>
+    </div>
+
+    <p class="playground-hint">Tip: press Ctrl / Cmd + Enter in any editor pane to run instantly. Python, Java and C++ run through a free public code-execution API, so those three need an internet connection.</p>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Learn Python — Frontend Forge</title>
+<meta name="description" content="A detailed, example-driven Python course: syntax, data structures, functions, OOP, files and error handling.">
+
+<meta name="theme-color" content="#14110d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Forge">
+
+<link rel="stylesheet" href="style.css">
+<script defer src="background.js"></script>
+<script defer src="course.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<canvas id="emberCanvas" aria-hidden="true"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <div class="logo">
+        <a href="index.html" style="display:flex;align-items:center;gap:10px;">
+            <span class="logo-mark" aria-hidden="true">⚒</span>
+            <h2>Frontend Forge</h2>
+        </a>
+    </div>
+
+    <nav id="siteNav">
+        <ul id="menu">
+            <li><a href="index.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏠</span><span class="nav-label">Home</span></a></li>
+            <li><a href="courses.html" class="nav-link active"><span class="nav-icon" aria-hidden="true">📘</span><span class="nav-label">Courses</span></a></li>
+            <li><a href="playground.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🧪</span><span class="nav-label">Playground</span></a></li>
+            <li><a href="quiz.html" class="nav-link"><span class="nav-icon" aria-hidden="true">❓</span><span class="nav-label">Quiz</span></a></li>
+            <li><a href="progress.html" class="nav-link"><span class="nav-icon" aria-hidden="true">📊</span><span class="nav-label">Progress</span></a></li>
+            <li><a href="certificates.html" class="nav-link"><span class="nav-icon" aria-hidden="true">🏅</span><span class="nav-label">Certificates</span></a></li>
+            <li><a href="contact.html" class="nav-link"><span class="nav-icon" aria-hidden="true">✉️</span><span class="nav-label">Contact</span></a></li>
+            <li><a href="about.html" class="nav-link"><span class="nav-icon" aria-hidden="true">ℹ️</span><span class="nav-label">About</span></a></li>
+        </ul>
+    </nav>
+
+    <div class="header-actions">
+        <button id="themeBtn" aria-label="Toggle light and dark theme">🌙</button>
+        <button id="menuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ================= COURSE HEADER ================= -->
+<section class="course-page-header">
+    <a class="back-link" href="courses.html">← Back to Courses</a>
+    <p class="eyebrow">&lt;course_04 /&gt;</p>
+    <h1>Learn <span class="ember-text">Python</span></h1>
+    <p>Python reads almost like plain English, which makes it one of the friendliest languages to start programming in — and one of the most used, from scripting to data science to backend servers. Work through the lessons below, then try the code yourself in the Playground's Python mode.</p>
+</section>
+
+<nav class="lesson-toc" aria-label="Lesson contents">
+    <a href="#l1">1. Variables &amp; Types</a>
+    <a href="#l2">2. Strings</a>
+    <a href="#l3">3. Lists &amp; Tuples</a>
+    <a href="#l4">4. Dictionaries &amp; Sets</a>
+    <a href="#l5">5. Conditionals</a>
+    <a href="#l6">6. Loops</a>
+    <a href="#l7">7. Functions</a>
+    <a href="#l8">8. Classes &amp; OOP</a>
+    <a href="#l9">9. Inheritance</a>
+    <a href="#l10">10. Error Handling</a>
+    <a href="#l11">11. File I/O</a>
+    <a href="#l12">12. Modules &amp; Packages</a>
+    <a href="#l13">13. List Comprehensions</a>
+    <a href="#l14">14. Decorators</a>
+    <a href="#l15">15. The Standard Library</a>
+</nav>
+
+<!-- ================= LESSONS ================= -->
+<article>
+
+<section class="lesson" id="l1">
+    <span class="lesson-index">Lesson 1</span>
+    <h2>Variables &amp; Data Types</h2>
+    <p>Python is <strong>dynamically typed</strong> — you never declare a type, the interpreter figures it out from the value you assign. The core built-in types are <code>int</code>, <code>float</code>, <code>str</code>, and <code>bool</code>.</p>
+    <div class="lesson-example">name = "Frontend Forge"      # str
+lessons = 15                 # int
+rating = 4.9                 # float
+is_free = True                # bool
+
+print(type(lessons))          # &lt;class 'int'&gt;
+print(f"{name} has {lessons} lessons")</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of four Python variable boxes labeled str, int, float and bool with example values">
+        <rect x="10" y="20" width="115" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--ember)"/>
+        <text x="67" y="45" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--ember)">str</text>
+        <text x="67" y="66" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">"Forge"</text>
+        <rect x="135" y="20" width="115" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="192" y="45" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">int</text>
+        <text x="192" y="66" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">15</text>
+        <rect x="260" y="20" width="115" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="317" y="45" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">float</text>
+        <text x="317" y="66" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">4.9</text>
+        <rect x="385" y="20" width="125" height="60" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="447" y="45" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">bool</text>
+        <text x="447" y="66" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-muted)">True</text>
+      </svg>
+      <figcaption>Every value carries its own type at runtime — Python checks it when the code runs, not before.</figcaption>
+    </figure>
+    <p>Use <code>snake_case</code> for variable names by convention, and remember that reassigning <code>lessons = "fifteen"</code> is perfectly legal — the variable just points at a new object of a different type.</p>
+</section>
+
+<section class="lesson" id="l2">
+    <span class="lesson-index">Lesson 2</span>
+    <h2>Strings</h2>
+    <p>Strings support slicing, concatenation, and a large set of built-in methods. <strong>f-strings</strong> (prefixed with <code>f</code>) are the modern way to embed expressions directly inside string literals.</p>
+    <div class="lesson-example">course = "python"
+print(course.upper())          # "PYTHON"
+print(course[0:3])             # "pyt" — slice
+print(course.replace("py", "PY"))
+
+score = 87
+message = f"You scored {score}% — {'Passed' if score >= 50 else 'Try again'}"
+print(message)</div>
+    <p>String slicing <code>[start:stop]</code> never includes the <code>stop</code> index, and negative indices count from the end — <code>course[-1]</code> is the last character. Strings are also immutable: every method above returns a <em>new</em> string rather than modifying the original.</p>
+</section>
+
+<section class="lesson" id="l3">
+    <span class="lesson-index">Lesson 3</span>
+    <h2>Lists &amp; Tuples</h2>
+    <p>A <code>list</code> is an ordered, mutable collection — add, remove, and reorder freely. A <code>tuple</code> looks similar but is <strong>immutable</strong> once created, which makes it useful for fixed data like coordinates.</p>
+    <div class="lesson-example">courses = ["HTML", "CSS", "JavaScript"]
+courses.append("Python")
+courses[0] = "HTML5"
+print(courses[-1])            # "Python"
+
+point = (35.6, 139.7)         # tuple — can't be changed
+lat, lng = point               # unpacking</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 460 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of a Python list as four indexed boxes 0 to 3">
+        <rect x="20" y="25" width="100" height="45" rx="6" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="70" y="52" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">"HTML5"</text>
+        <text x="70" y="88" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-dim)">[0]</text>
+        <rect x="130" y="25" width="100" height="45" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="180" y="52" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">"CSS"</text>
+        <text x="180" y="88" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-dim)">[1]</text>
+        <rect x="240" y="25" width="100" height="45" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="290" y="52" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">"JS"</text>
+        <text x="290" y="88" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-dim)">[2]</text>
+        <rect x="350" y="25" width="100" height="45" rx="6" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="400" y="52" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">"Python"</text>
+        <text x="400" y="88" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10px;fill:var(--text-dim)">[-1]</text>
+      </svg>
+      <figcaption>Indices count from 0 at the front, or -1 at the back — both point at valid elements in the same list.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l4">
+    <span class="lesson-index">Lesson 4</span>
+    <h2>Dictionaries &amp; Sets</h2>
+    <p>A <code>dict</code> stores key-value pairs for fast lookup by name instead of position. A <code>set</code> stores only unique values with no order — perfect for membership checks and removing duplicates.</p>
+    <div class="lesson-example">course = {
+    "name": "Python",
+    "lessons": 15,
+    "topics": ["syntax", "OOP", "files"]
+}
+print(course["lessons"])       # 15
+course["level"] = "Beginner"   # add a new key
+
+completed = {"html", "css", "python"}
+completed.add("javascript")
+print("css" in completed)      # True</div>
+    <p>Use <code>course.get("level", "Unknown")</code> instead of <code>course["level"]</code> when a key might be missing — <code>get</code> returns a default instead of raising a <code>KeyError</code>.</p>
+</section>
+
+<section class="lesson" id="l5">
+    <span class="lesson-index">Lesson 5</span>
+    <h2>Conditionals</h2>
+    <p>Python uses indentation, not curly braces, to mark which lines belong inside an <code>if</code>/<code>elif</code>/<code>else</code> block — get the whitespace wrong and the code won't run.</p>
+    <div class="lesson-example">score = 72
+
+if score >= 90:
+    grade = "A"
+elif score >= 70:
+    grade = "B"
+else:
+    grade = "C"
+
+print(grade)                   # "B"
+print("Pass" if score >= 50 else "Fail")   # ternary</div>
+    <p>Python has no <code>switch</code> statement in most released versions before 3.10 — chained <code>elif</code> is the standard pattern, and <code>match</code>/<code>case</code> (3.10+) is the closer equivalent for matching against several fixed values.</p>
+</section>
+
+<section class="lesson" id="l6">
+    <span class="lesson-index">Lesson 6</span>
+    <h2>Loops</h2>
+    <p><code>for</code> loops iterate directly over a collection's items — no manual index counter needed — while <code>while</code> loops repeat as long as a condition stays true. <code>range()</code> generates a sequence of numbers when you do need a counter.</p>
+    <div class="lesson-example">for course in ["HTML", "CSS", "Python"]:
+    print(f"Learning {course}")
+
+for i in range(3):
+    print(i)                   # 0, 1, 2
+
+attempts = 0
+while attempts &lt; 3:
+    attempts += 1</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 420 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flowchart of a while loop: check condition, if true run body and loop back, if false exit">
+        <rect x="150" y="10" width="120" height="40" rx="20" style="fill:var(--surface-2);stroke:var(--ember)"/>
+        <text x="210" y="35" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">attempts &lt; 3?</text>
+        <line x1="210" y1="50" x2="210" y2="80" style="stroke:var(--ember);stroke-width:2" marker-end="url(#pa)"/>
+        <text x="225" y="68" style="font-family:'Inter',sans-serif;font-size:10px;fill:var(--ember)">true</text>
+        <rect x="140" y="80" width="140" height="40" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="210" y="105" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;fill:var(--text)">attempts += 1</text>
+        <path d="M140,100 C60,100 60,30 150,30" style="fill:none;stroke:var(--border);stroke-width:2" marker-end="url(#pa)"/>
+        <line x1="300" y1="30" x2="360" y2="30" style="stroke:var(--border);stroke-width:2" marker-end="url(#pa)"/>
+        <text x="315" y="20" style="font-family:'Inter',sans-serif;font-size:10px;fill:var(--text-muted)">false</text>
+        <text x="365" y="35" style="font-family:'Inter',sans-serif;font-size:11px;fill:var(--text-muted)">exit</text>
+        <defs><marker id="pa" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--ember)"/></marker></defs>
+      </svg>
+      <figcaption>Forgetting to update the loop variable inside the body is the most common cause of an infinite loop.</figcaption>
+    </figure>
+    <p><code>break</code> exits a loop immediately, and <code>continue</code> skips straight to the next iteration — both work identically inside <code>for</code> and <code>while</code>.</p>
+</section>
+
+<section class="lesson" id="l7">
+    <span class="lesson-index">Lesson 7</span>
+    <h2>Functions</h2>
+    <p><code>def</code> defines a reusable block of code. Parameters can have default values, and <code>*args</code>/<code>**kwargs</code> let a function accept any number of extra positional or named arguments.</p>
+    <div class="lesson-example">def greet(name, greeting="Hello"):
+    return f"{greeting}, {name}!"
+
+print(greet("Learner"))                # "Hello, Learner!"
+print(greet("Learner", greeting="Hi")) # "Hi, Learner!"
+
+def total(*scores):
+    return sum(scores)
+
+print(total(80, 92, 76))               # 248</div>
+    <p>Functions are first-class objects — you can pass one as an argument to another, store it in a variable, or return it from a function, just like any other value.</p>
+</section>
+
+<section class="lesson" id="l8">
+    <span class="lesson-index">Lesson 8</span>
+    <h2>Classes &amp; OOP</h2>
+    <p>A <code>class</code> bundles data and behavior together. <code>__init__</code> is the constructor, called automatically when you create a new instance, and <code>self</code> refers to that specific instance inside every method.</p>
+    <div class="lesson-example">class Course:
+    def __init__(self, name, lessons):
+        self.name = name
+        self.lessons = lessons
+        self.completed = 0
+
+    def progress(self):
+        return round(self.completed / self.lessons * 100)
+
+py = Course("Python", 15)
+py.completed = 6
+print(py.progress())          # 40</div>
+    <p>Every method needs <code>self</code> as its first parameter so Python knows which instance's data to work with — it's passed automatically when you call <code>py.progress()</code>, you never pass it yourself.</p>
+</section>
+
+<section class="lesson" id="l9">
+    <span class="lesson-index">Lesson 9</span>
+    <h2>Inheritance</h2>
+    <p>A subclass inherits every method and attribute from its parent by putting the parent's name in parentheses, and can override or extend behavior. <code>super()</code> calls the parent's version of a method from inside the child's.</p>
+    <div class="lesson-example">class CertifiedCourse(Course):
+    def __init__(self, name, lessons):
+        super().__init__(name, lessons)
+        self.certified = False
+
+    def certify(self):
+        if self.progress() >= 50:
+            self.certified = True
+        return self.certified
+
+py = CertifiedCourse("Python", 15)
+py.completed = 9
+py.certify()                  # True</div>
+
+    <figure class="lesson-diagram">
+      <svg viewBox="0 0 400 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of Course class at top with CertifiedCourse inheriting from it below">
+        <rect x="120" y="10" width="160" height="42" rx="8" style="fill:var(--surface-2);stroke:var(--border)"/>
+        <text x="200" y="36" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11.5px;fill:var(--text)">class Course</text>
+        <line x1="200" y1="52" x2="200" y2="78" style="stroke:var(--ember);stroke-width:2" marker-end="url(#pb)"/>
+        <rect x="95" y="78" width="210" height="42" rx="8" style="fill:var(--ember-dim);stroke:var(--ember)"/>
+        <text x="200" y="104" text-anchor="middle" style="font-family:'JetBrains Mono',monospace;font-size:11px;fill:var(--text)">class CertifiedCourse(Course)</text>
+        <defs><marker id="pb" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" style="fill:var(--ember)"/></marker></defs>
+      </svg>
+      <figcaption>CertifiedCourse gets progress() for free from Course, and adds its own certify() method on top.</figcaption>
+    </figure>
+</section>
+
+<section class="lesson" id="l10">
+    <span class="lesson-index">Lesson 10</span>
+    <h2>Error Handling</h2>
+    <p><code>try</code>/<code>except</code> catches an error instead of letting it crash the whole program. Catch specific exception types where possible rather than a bare <code>except</code>, so you don't accidentally swallow bugs you didn't expect.</p>
+    <div class="lesson-example">def safe_divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        print("Can't divide by zero")
+        return None
+    except TypeError:
+        print("Both values must be numbers")
+        return None
+    finally:
+        print("Division attempted")
+
+safe_divide(10, 0)</div>
+    <p>The <code>finally</code> block always runs, whether an exception was raised or not — useful for cleanup like closing a file or a network connection.</p>
+</section>
+
+<section class="lesson" id="l11">
+    <span class="lesson-index">Lesson 11</span>
+    <h2>File I/O</h2>
+    <p>The <code>with</code> statement opens a file and guarantees it gets closed afterward, even if an error occurs partway through — no need for a manual <code>close()</code> call.</p>
+    <div class="lesson-example">with open("progress.txt", "w") as f:
+    f.write("Python: 60%\n")
+    f.write("HTML: 100%\n")
+
+with open("progress.txt", "r") as f:
+    for line in f:
+        print(line.strip())</div>
+    <p>Mode strings control behavior: <code>"w"</code> overwrites the file, <code>"a"</code> appends to the end, and <code>"r"</code> (the default) opens for reading only — opening a missing file in <code>"r"</code> mode raises a <code>FileNotFoundError</code>.</p>
+</section>
+
+<section class="lesson" id="l12">
+    <span class="lesson-index">Lesson 12</span>
+    <h2>Modules &amp; Packages</h2>
+    <p>Any <code>.py</code> file is automatically a module other files can <code>import</code>. A folder containing an <code>__init__.py</code> is a package — a namespace for grouping related modules together.</p>
+    <div class="lesson-example"># utils.py
+def slugify(text):
+    return text.lower().replace(" ", "-")
+
+# main.py
+import utils
+from utils import slugify as make_slug
+
+print(utils.slugify("Learn Python"))   # "learn-python"
+print(make_slug("Frontend Forge"))</div>
+    <p><code>import module</code> requires prefixing every call with the module name; <code>from module import name</code> pulls a specific function or class directly into your file's namespace, optionally renamed with <code>as</code>.</p>
+</section>
+
+<section class="lesson" id="l13">
+    <span class="lesson-index">Lesson 13</span>
+    <h2>List Comprehensions</h2>
+    <p>A comprehension builds a new list from an existing iterable in a single readable line, optionally filtering with an <code>if</code> clause — the same result as a <code>for</code> loop with <code>.append()</code>, but more idiomatic Python.</p>
+    <div class="lesson-example">scores = [55, 92, 40, 78, 61]
+
+passed = [s for s in scores if s >= 50]
+# [55, 92, 78, 61]
+
+doubled = [s * 2 for s in scores]
+
+grades = {s: ("Pass" if s >= 50 else "Fail") for s in scores}</div>
+    <p>The same syntax works for building sets (<code>{...}</code>) and dictionaries (<code>{k: v for ...}</code>) — collectively these are called comprehensions, and they run faster than an equivalent manual loop.</p>
+</section>
+
+<section class="lesson" id="l14">
+    <span class="lesson-index">Lesson 14</span>
+    <h2>Decorators</h2>
+    <p>A decorator is a function that wraps another function to add behavior — logging, timing, access control — without changing the original function's code. The <code>@</code> syntax is shorthand for passing a function into another and reassigning the name.</p>
+    <div class="lesson-example">import time
+
+def timed(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} took {time.time() - start:.4f}s")
+        return result
+    return wrapper
+
+@timed
+def load_lessons(course):
+    return [f"Lesson {i}" for i in range(course)]
+
+load_lessons(15)</div>
+    <p><code>@timed</code> above <code>def load_lessons</code> is exactly equivalent to writing <code>load_lessons = timed(load_lessons)</code> — the decorator receives the original function and returns a replacement.</p>
+</section>
+
+<section class="lesson" id="l15">
+    <span class="lesson-index">Lesson 15</span>
+    <h2>The Standard Library</h2>
+    <p>Python ships with a huge "batteries included" standard library, so many common tasks need no external installation at all — <code>json</code> for parsing data, <code>datetime</code> for dates, <code>random</code> for randomness, and <code>collections</code> for specialized data structures.</p>
+    <div class="lesson-example">import json
+from datetime import date
+from collections import Counter
+
+data = json.dumps({"course": "Python", "lessons": 15})
+today = date.today()
+
+topics = ["oop", "loops", "oop", "files", "loops", "oop"]
+print(Counter(topics).most_common(1))   # [('oop', 3)]</div>
+    <p><code>Counter</code> tallies occurrences in one call instead of a manual loop with a dictionary, and <code>json.dumps</code>/<code>json.loads</code> mirror JavaScript's <code>JSON.stringify</code>/<code>JSON.parse</code> for exchanging data between the two languages.</p>
+</section>
+
+</article>
+
+<!-- ================= PRACTICE CTA ================= -->
+<section class="practice-cta">
+    <p class="eyebrow center">&lt;your_turn /&gt;</p>
+    <h2>Ready to try Python for yourself?</h2>
+    <p>Head to the Playground — it'll open straight into Python mode.</p>
+    <a class="startBtn" href="playground.html?mode=python">Open Python Playground →</a>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> Frontend Forge. Keep building.</p>
+</footer>
+
+<button id="backToTopBtn" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V6"/><path d="M6 12l6-6 6 6"/></svg>
+</button>
+
+</body>
+</html>
